@@ -1,0 +1,587 @@
+﻿{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ZUKS">
+    <meta name="description" content="ZUKS ist die erste Organisation, die es sich zur Aufgabe gemacht hat Freiwillige in Katastrophengebieten zu koordinieren und an die Hand zu nehmen.">
+    <meta name="keywords" content="ZUKS Zivile Unterst&uuml;tzung Katastrophenschutz Organisation Hilfe Freiwillig">
+    <title>ZUKS - Zivile Unterst&uuml;tzung im Katastrophenschutz</title>
+    <link rel="shortcut icon" href="{% static "favicon.png?v=2" %}" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link type="text/css" href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet' >
+    <link type="text/css" href="{% static "css/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
+    <link type="text/css" href="{% static "css/rondo/style.css" %}" rel="stylesheet">
+    <link type="text/css" href="{% static "css/jquery.fancybox.css" %}" rel="stylesheet"  />
+    <link type="text/css" href="{% static "css/style.css" %}" rel="stylesheet">
+</head>
+
+
+
+<body>
+    <header class="header" id="jump">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                        <span class="sr-only">Toggle navigation</span> 
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="{% static "img/logo/logo@300.png" %}" alt="ZUKS Logo" /></a>
+                </div>
+                <div class="collapse navbar-collapse hidden-xs">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#zuks">ZUKS</a></li>
+                        <li><a href="#idee">Idee</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#motivation">Motivation</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                        <li><a href="konzept.html">Konzept</a></li>
+                        <li><a href="presse.html">Presse</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <div class="collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            ZUKS</a></li>
+                        <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Idee</a></li>
+                        <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Team</a></li>
+                        <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Motivation</a></li>
+                        <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Kontakt</a></li>
+                        <li><a href="konzept.html" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Konzept</a></li>
+                        <li><a href="presse.html" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            Presse</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-responsive-collapse -->
+            </div>
+        </nav>
+    </header>
+    <div class="jumper" id="zuks">
+    </div>
+    <div class="section type-1 big splash">
+        <div class="splash-cover">
+        </div>
+        <div class="container">
+            <div class="splash-block">
+                <div class="centered">
+                    <div class="container">
+                        <div>
+                            <!--<h1>ZUKS - Zivile Unterst&uuml;tzung im Katastrophenschutz</h1>
+                            <h2>Jeder kann helfen!</h2>-->
+                            <img class="header-logo-img" src="img/logo/logo-weiss@1200.png" alt="ZUKS Logo"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="idee" class="jumper">
+    </div>
+    <div class="section type-2 concept">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-motivation.png" %}" class="content-icon" alt="Motivation Icon"/>
+                        <h4>Katastrophen passieren immer wieder</h4>
+                        <p>
+                             Sind wir nicht direkt von einem Ungl&uuml;ck betroffen, sitzen wir ersch&uuml;ttert vor dem Fernseher und lassen uns machtlos das Leid anderer pr&auml;sentieren. Das muss nicht sein!                      
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-idee.png" %}" class="content-icon" alt="Idee Icon"/>
+                        <h4>Auch Du kannst helfen</h4>
+                        <p>
+                            Sands&auml;cke f&uuml;llen, Betten aufbauen, Deiche kontrollieren &ndash; das kannst auch Du. Wir erm&ouml;glichen jedem, auch ohne zeitintensive Ausbildung, den Menschen vor Ort zu helfen.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-funktion.png" %}" class="content-icon" alt="Funktion Icon"/>
+                        <h4>Wie soll das funktionieren?</h4>
+                        <p>
+                            Du registrierst dich bei uns und wir kontaktieren dich im Falle einer Katastrophe. W&auml;hrend Du im Einsatz bist, &uuml;bernehmen wir die Planung und Versorgung. Du hilfst &ndash; wir koordinieren! 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-mitmachen.png" %}" class="content-icon" alt="Mitmachen Icon"/>
+                        <h4>Wie kann ich mitmachen?</h4>
+                        <p>
+                            Da das Projekt in Planung ist, gibt es zur Zeit noch nichts zum Anpacken. Helfen kannst Du dennoch, indem Du unsere Idee
+                            &uuml;ber <a href="https://www.facebook.com/zuks.org" target="_blank">Facebook</a>, <a href="https://plus.google.com/+ZuksOrg" rel="publisher" target="_blank">Google+</a> und <a href="https://twitter.com/zuksDE" target="_blank">Twitter</a> verbreitest.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-planung.png" %}" class="content-icon" alt="Planung Icon"/>
+                        <h4>Wie ist der aktuelle Stand?</h4>
+                        <p>
+                             Momentan arbeiten wir an dem organisatorischen und technischen Konzept, das alle unsere Ideen vereint. Den aktuellen Stand der Planungen findest Du auf unserer <a href="konzept.html">Konzept Seite</a>.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static "img/icons/icon-newsletter.png" %}" class="content-icon" alt="Newsletter Icon"/>
+                        <h4>Bleib dran!</h4>
+                        <form id="newsletterform" role="form" method="post" action="newsletter.php?subscribe=1">
+                            <input type="email" class="newsletter-field" placeholder="E-Mail-Adresse" name="email" />
+                            <div class="success">
+                                Sie wurden erfolgreich in den Newsletter eingetragen!
+                            </div>
+                            <div class="error">
+                                Die Anfrage konnte leider nicht bearbeitet werden. Versuchen Sie es sp&auml;ter erneut.
+                            </div>
+                            <button class="submit-newsletter">Newsletter abonnieren</button>
+                        </form>
+
+                        <div class="social-buttons">
+                            <div class="social-button-wrapper">
+                                <a href="https://twitter.com/zuksDE" class="twitter-follow-button" data-show-count="false" data-lang="de" data-show-screen-name="false">@zuksDE folgen</a>
+                            </div>
+                            <div class="social-button-wrapper">
+                                <div class="g-follow" data-annotation="none" data-height="20" data-href="https://plus.google.com/+ZuksOrg" data-rel="publisher"></div>
+                            </div>
+
+                            <div class="social-button-wrapper">
+                                <div class="fb-like" data-href="https://facebook.com/zuks.org" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-concept-link type-1">
+        <div class="container">
+            <h2 class="concept-link"><img class="forward" src="img/icons/forward_white.png" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="konzept.html" class="concept-link">Konzept-Seite.</a></h2>
+        </div>
+    </div>
+    
+    <div id="team" class="jumper">
+    </div>
+    <div class="section type-3">
+        <div class="container">
+            <h4 class="headline">Team</h4>
+            <h2>Die Mitstreiter kurz vorgestellt</h2>
+            <div class="row">
+                <br>
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/simonseyer.jpg" %}" class="avatar img-circle" alt="Simon Seyer Profilbild">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Simon Seyer, 21</h4>
+                            <p>
+                                <i>studiert Medieninformatik</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Projektplanung, Technische Leitung
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:simon.seyer@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                                <a href="https://www.facebook.com/simon.seyer.1" target="_blank"><i class="social-icon-facebook"></i></a>
+                                <a href="https://twitter.com/Eldorado234" target="_blank"><i class="social-icon-twitter"></i></a>
+                                <a href="https://plus.google.com/+SimonSeyer" target="_blank"><i class="social-icon-googleplus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:.col-->
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/maxduckwitz.jpg" %}" class="avatar size-default img-circle" alt="Max Duckwitz">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Max Duckwitz, 24</h4>
+                            <p>
+                                <i>studiert Wirtschaftsinformatik</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Einsatztaktik &amp; Rettungswesen, Political Relations
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:max.duckwitz@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                                <a href="https://www.facebook.com/max.duckwitz" target="_blank"><i class="social-icon-facebook"></i></a>
+                                <a href="https://www.twitter.com/mduckwitz" target="_blank"><i class="social-icon-twitter"></i></a>
+                                <a href="https://plus.google.com/107032157842354551284" target="_blank"><i class="social-icon-googleplus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/rahelhabacker.jpg" %}" class="avatar  img-circle" alt="Rahel Habacker">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Rahel Habacker, 21</h4>
+                            <p>
+                                <i>studiert Medieninformatik</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Entwicklung, &Ouml;ffentlichkeitsarbeit
+                            </p>
+
+                            <div class="social-links">
+                                <a href="mailto:rahel.habacker@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                                <a href="https://www.facebook.com/rahel.habacker" target="_blank"><i class="social-icon-facebook"></i></a>
+                                <a href="https://plus.google.com/u/0/102383460436383615912/" target="_blank"><i class="social-icon-googleplus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--end:.row-->
+            <div class="row">
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/dominikneu.jpg" %}" class="avatar size-default img-circle" alt="Dominik Neu ARD Superchance">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Dominik Neu, 21</h4>
+                            <p>
+                                <i>studiert Medieninformatik</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Social Media &amp; Public Relations
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:dominik.neu@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                                <a href="https://www.facebook.com/dominik.neu.10" target="_blank"><i class="social-icon-facebook"></i></a>
+                                <a href="https://plus.google.com/u/0/106462434955155712098/posts" target="_blank"><i class="social-icon-googleplus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:.col-->
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/tilmanginzel.jpg" %}" class="avatar size-default img-circle" alt="Tilman Ginzel">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Tilman Ginzel, 21</h4>
+                            <p>
+                                <i>studiert Medieninformatik</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Web- und Softwareentwicklung
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:tilman.ginzel@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                                <a href="https://www.facebook.com/tilman93" target="_blank"><i class="social-icon-facebook"></i></a>
+                                <a href="https://plus.google.com/103291842947925719123" target="_blank"><i class="social-icon-googleplus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end:.row-->
+            <div class="row">
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/simoneniederpruem.jpg" %}" class="avatar  img-circle" alt="Simone Niederpr&uuml;m">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Simone Niederpr&uuml;m, 38</h4>
+                            <p>
+                                <i>Leiterin einer kath. Kindertagesst&auml;tte</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Organisation und Verwaltung
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:simone.niederpruem@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:.col-->
+                <div class="col-lg-4 padding-top-50">
+                    <div class="person media">
+                        <div class="person-avatar pull-left">
+                            <img src="{% static "img/avatar/yvonnegutte.jpg" %}" class="avatar size-default img-circle" alt="Yvonne Gutte">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="person-name">Yvonne Gutte, 29</h4>
+                            <p>
+                                <i>studiert Kommunikationsdesign</i>
+                            </p>
+                            <p class="person-brief muted">
+                                Corporate Design
+                            </p>
+                            <div class="social-links">
+                                <a href="mailto:yvonne.gutte@zuks.org" target="_blank"><i class="social-icon-email"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end:.row-->
+        </div>
+        <!--end:.container-->
+    </div>
+    <div id="motivation" class="jumper">
+    </div>
+    <div class="section type-2">
+        <div class="container">
+            <h4 class="headline">Motivation</h4>
+            <h2>Das spornt uns an</h2>
+            <div id="carousel-testimonial" class="carousel slide bs-docs-carousel-example">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-testimonial" data-slide-to="0" class=""></li>
+                    <li data-target="#carousel-testimonial" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-testimonial" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs	">
+                                <img src="{% static "img/avatar/simonseyer.jpg" %}" class="avatar size-default img-circle" alt="Simon Seyer">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Ich w&uuml;nsche mir, dass wir viele Menschen zum Helfen animieren und damit die Folgen von Naturkatastrophen reduzieren k&ouml;nnen. ZUKS hat das Potential die Arbeit des Katastrophenschutzes zu revolutionieren.
+                                </p>
+                                <p>Simon Seyer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs	">
+                                <img src="{% static "img/avatar/maxduckwitz.jpg" %}" class="avatar size-default img-circle" alt="Max Duckwitz">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Nach insgesamt zehnj&auml;hriger Erfahrung im Katastrophenschutz habe ich die Schwierigkeiten, welche herk&ouml;mmliche Rettungsorganisationen haben kennen gelernt. Die ZUKS nutzt moderne und von anderen Rettungsorganisationen lange vernachl&auml;ssigte Technologien, um eben solche Probleme zu beheben und gleichzeitig ein allgemeines Bewusstsein f&uuml;r Katastrophenschutz in der Bev&ouml;lkerung zu wecken.
+                                </p>
+                                <p>Max Duckwitz</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs ">
+                                <img src="{% static "img/avatar/rahelhabacker.jpg" %}" class="avatar size-default img-circle" alt="Rahel Habacker">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    ZUKS bietet f&uuml;r mich als Einzelne eine gute M&ouml;glichkeit selbst aktiv zu werden und zur Verbesserung der Kommunikation w&auml;hrend Naturkatastrophen, sowie zur schnellen Linderung der Ausma&szlig;e, beizutragen.
+                                </p>
+                                <p>Rahel Habacker</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs	">
+                                <img src="{% static "img/avatar/dominikneu.jpg" %}" class="avatar size-default img-circle" alt="Dominik Neu ARD Superchance">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Bei J&ouml;rg Pilawas <i>Die Superchance</i> in der ARD (28.08.2014, 20:15 Uhr) werde ich f&uuml;r ZUKS an den Start gehen. Die 50.000 &euro; sind f&uuml;r uns eine einmalige Chance unsere Idee zu realisieren. Daf&uuml;r werde ich k&auml;mpfen.
+                                    <!--In ZUKS sehe ich die M&ouml;glichkeit die organisatorische und technische Seite des Katastrophenschutzes in Deutschland auszubauen. Die Energie einzelner Freiwilliger verwirkt sich oftmals da sie nicht gezielt eingesetzt werden kann. Mit Hilfe von ZUKS kann diese geb&uuml;ndelt werden.-->
+                                </p>
+                                <p>Dominik Neu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs ">
+                                <img src="{% static "img/avatar/tilmanginzel.jpg" %}" class="avatar size-default img-circle" alt="Tilman Ginzel">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Die Idee hinter ZUKS hat mich von Anfang an &uuml;berzeugt. Deswegen freue ich mich, das Startup im Aufbau und der Softwareentwicklung unterst&uuml;tzen zu k&ouml;nnen.
+                                </p>
+                                <p>Tilman Ginzel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs ">
+                                <img src="{% static "img/avatar/simoneniederpruem.jpg" %}" class="avatar size-default img-circle" alt="Simone Niederpr&uuml;m">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Ich wollte schon lange bei Not- und Katastrophenf&auml;llen helfen,
+                                    wusste aber nie wie. So wurde die Idee zur ZUKS geboren.
+                                </p>
+                                <p>Simone Niederpr&uuml;m</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial media">
+                            <div class="testimonial-avatar pull-right hidden-xs ">
+                                <img src="{% static "img/avatar/yvonnegutte.jpg" %}" class="avatar size-default img-circle" alt="Yvonne Gutte">
+                            </div>
+                            <div class="testimonial-content media-body">
+                                <p class="lead">
+                                    Ein spannendes Projekt, welches ich gerne unterst&uuml;tze und mich als Designer vor neue Herausforderungen stellt.
+                                </p>
+                                <p>Yvonne Gutte</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controller btn-group">
+                    <a class="btn btn-xs btn-inverse" href="#carousel-testimonial" data-slide="prev"><i
+                        class="icon-angle-left"></i></a><a class="btn btn-xs btn-inverse" href="#carousel-testimonial"
+                            data-slide="next"><i class="icon-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="kontakt" class="jumper">
+    </div>
+    <div class="section type-1 section-contact">
+        <div class="container">
+            <h4 class="headline">Kontakt</h4>
+            <h2>Melde dich doch bei uns</h2>
+            <div class="row">
+                <!--<div class="col-lg-4">
+                    <address>
+                        <div class="address-row">
+                            <div class="address-sign">
+                                <i class="icon-map-marker"></i>
+                            </div>
+                            <div style="address-info">
+                                <b>Single Page Responsive Template</b>,<br>
+                                Using Twitter Bootstrap 3,<br>
+                                EGrappler.com
+                            </div>
+                        </div>
+                    </address>
+                    <div class="visible-xs visible-sm">
+                        <br class="gap-30" />
+                        <hr class="gap-divider" />
+                        <br class="gap-30" />
+                    </div>
+                </div>-->
+                <div class="col-lg-7">
+                    <form id="contactform" role="form" method="post" action="#">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name *">
+                                    <br class="gap-15" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail Adresse *">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Betreff">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" name="message" rows="8" placeholder="Dein Text *"></textarea>
+                        </div>
+                        <div class="success">
+                            Deine Nachricht wurde erfolgreich gesendet
+                        </div>
+                        <div class="error">
+                            Die Nachricht konnte leider nicht gesendet werden
+                        </div>
+                        <button id="button-send" class="btn btn-block btn-success">
+                            Nachricht senden
+                        </button>
+                        
+                    </form>
+                </div>
+                <div class="col-lg-5">
+                    <img src="{% static "img/logo/logo-bild-weiss@320.png" %}" alt="ZUKS Logo Bildmarke" class="content-icon-160" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    Meilleur - A Free Responsive Bootstrap 3 Template &copy; 2014 - <a href="http://www.egrappler.com">
+                        EGrappler.com</a>
+                </div>
+                <div class="col-lg-5" id="impressum-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="impressum.html#haftungsausschluss">Haftungsausschluss</a>
+                    <a href="impressum.html#datenschutz">Datenschutzerkl&auml;rung</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Scripts-->
+    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.smooth-scroll.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.mixitup.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.easing.1.3.js" %}" ></script>
+    <script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/index.scroll.js" %}"></script>
+    <!-- F&uuml;gen Sie dieses Tag nach dem letzten Widget-Tag ein. -->
+    <script type="text/javascript">
+      window.___gcfg = {lang: 'de'};
+     
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
+    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=154754951342231&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDoNotTrack", true]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.zuks.org/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="http://analytics.zuks.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+</body>
+</html>
