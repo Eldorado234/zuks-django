@@ -80,7 +80,8 @@
                         <div>
                             <!--<h1>ZUKS - Zivile Unterst&uuml;tzung im Katastrophenschutz</h1>
                             <h2>Jeder kann helfen!</h2>-->
-                            <img class="header-logo-img" src="img/logo/logo-weiss@1200.png" alt="ZUKS Logo"/>
+                            <img class="header-logo-img" src="{% static "img/logo/logo-weiss@1200.png" %}" alt="ZUKS Logo" />
+                            <!-- <img class="header-logo-img" src="img/logo/logo-weiss@1200.png" alt="ZUKS Logo"/>-->
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,9 @@
 
     <div class="section-concept-link type-1">
         <div class="container">
-            <h2 class="concept-link"><img class="forward" src="img/icons/forward_white.png" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="konzept.html" class="concept-link">Konzept-Seite.</a></h2>
+            <h2 class="concept-link">
+                <img class="forward" src="{% static "img/icons/forward_white.png" %}" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="konzept.html" class="concept-link">Konzept-Seite.</a>
+            </h2>
         </div>
     </div>
     
