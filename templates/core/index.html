@@ -1,73 +1,12 @@
-﻿{% load staticfiles %}
+{% extends "core/base.html" %} 
+{% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="ZUKS">
-    <meta name="description" content="ZUKS ist die erste Organisation, die es sich zur Aufgabe gemacht hat Freiwillige in Katastrophengebieten zu koordinieren und an die Hand zu nehmen.">
+{% block "metadata" %}
+ 	<meta name="description" content="ZUKS ist die erste Organisation, die es sich zur Aufgabe gemacht hat Freiwillige in Katastrophengebieten zu koordinieren und an die Hand zu nehmen.">
     <meta name="keywords" content="ZUKS Zivile Unterst&uuml;tzung Katastrophenschutz Organisation Hilfe Freiwillig">
-    <title>ZUKS - Zivile Unterst&uuml;tzung im Katastrophenschutz</title>
-    <link rel="shortcut icon" href="{% static "favicon.png?v=2" %}" type="image/x-icon" />
-    <!-- Stylesheets -->
-    <link type="text/css" href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-    <link type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet' >
-    <link type="text/css" href="{% static "css/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
-    <link type="text/css" href="{% static "css/rondo/style.css" %}" rel="stylesheet">
-    <link type="text/css" href="{% static "css/jquery.fancybox.css" %}" rel="stylesheet"  />
-    <link type="text/css" href="{% static "css/style.css" %}" rel="stylesheet">
-</head>
+{% endblock "metadata" %}
 
-
-
-<body>
-    <header class="header" id="jump">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                        <span class="sr-only">Toggle navigation</span> 
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span><span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="{% static "img/logo/logo@300.png" %}" alt="ZUKS Logo" /></a>
-                </div>
-                <div class="collapse navbar-collapse hidden-xs">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#zuks">ZUKS</a></li>
-                        <li><a href="#idee">Idee</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#motivation">Motivation</a></li>
-                        <li><a href="#kontakt">Kontakt</a></li>
-                        <li><a href="konzept.html">Konzept</a></li>
-                        <li><a href="presse.html">Presse</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-                <div class="collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            ZUKS</a></li>
-                        <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Idee</a></li>
-                        <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Team</a></li>
-                        <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Motivation</a></li>
-                        <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Kontakt</a></li>
-                        <li><a href="konzept.html" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Konzept</a></li>
-                        <li><a href="presse.html" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Presse</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-responsive-collapse -->
-            </div>
-        </nav>
-    </header>
+{% block "content" %}
     <div class="jumper" id="zuks">
     </div>
     <div class="section type-1 big splash">
@@ -131,7 +70,7 @@
                         <img src="{% static "img/icons/icon-planung.png" %}" class="content-icon" alt="Planung Icon"/>
                         <h4>Wie ist der aktuelle Stand?</h4>
                         <p>
-                             Momentan arbeiten wir an dem organisatorischen und technischen Konzept, das alle unsere Ideen vereint. Den aktuellen Stand der Planungen findest Du auf unserer <a href="konzept.html">Konzept Seite</a>.
+                             Momentan arbeiten wir an dem organisatorischen und technischen Konzept, das alle unsere Ideen vereint. Den aktuellen Stand der Planungen findest Du auf unserer <a href="{% url "konzept" %}">Konzept Seite</a>.
                         </p>
                     </div>
                     <div class="col-lg-4">
@@ -170,7 +109,7 @@
     <div class="section-concept-link type-1">
         <div class="container">
             <h2 class="concept-link">
-                <img class="forward" src="{% static "img/icons/forward_white.png" %}" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="konzept.html" class="concept-link">Konzept-Seite.</a>
+                <img class="forward" src="{% static "img/icons/forward_white.png" %}" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="{% url "konzept" %}" class="concept-link">Konzept-Seite.</a>
             </h2>
         </div>
     </div>
@@ -522,33 +461,18 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    Meilleur - A Free Responsive Bootstrap 3 Template &copy; 2014 - <a href="http://www.egrappler.com">
-                        EGrappler.com</a>
-                </div>
-                <div class="col-lg-5" id="impressum-links">
-                    <a href="impressum.html">Impressum</a>
-                    <a href="impressum.html#haftungsausschluss">Haftungsausschluss</a>
-                    <a href="impressum.html#datenschutz">Datenschutzerkl&auml;rung</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--Scripts-->
-    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery.smooth-scroll.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery.mixitup.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery.easing.1.3.js" %}" ></script>
-    <script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/index.scroll.js" %}"></script>
-    <!-- F&uuml;gen Sie dieses Tag nach dem letzten Widget-Tag ein. -->
-    <script type="text/javascript">
+
+{% include "core/footer.html" %}
+{% endblock "content" %}
+
+
+{% block "scrollScript" %}
+        <script type="text/javascript" src="{% static "js/index.scroll.js" %}"></script>
+{% endblock "scrollScript" %}
+
+
+{% block "script" %}
+	<script type="text/javascript">
       window.___gcfg = {lang: 'de'};
      
       (function() {
@@ -569,22 +493,4 @@
       js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=154754951342231&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Piwik -->
-    <script type="text/javascript">
-      var _paq = _paq || [];
-      _paq.push(["setDoNotTrack", true]);
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.zuks.org/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    <noscript><p><img src="http://analytics.zuks.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->
-</body>
-</html>
+{% endblock "script" %}

@@ -1,0 +1,47 @@
+{% extends "core/base.html" %} 
+{% load staticfiles %}
+
+{% block "metadata" %}
+    <meta name="description" content="Presseartikel &uuml;ber ZUKS">
+    <meta name="keywords" content="ZUKS Presse Artikel Presseartikel">
+{% endblock "metadata" %}
+
+{% block "content" %}
+  <div class="jumper" id="impressum"></div>
+    <div class="section type-2 impressum">
+        <div class="container">
+            <h1>Presse</h1>
+            <p>
+                Presseausz&uuml;ge und Berichterstattungen &uuml;ber ZUKS.
+            </p>
+            
+            <h4 class="padding-top-25">30. August 2014</h4>
+            <p>
+                <a href="http://www.wiesbadener-kurier.de/lokales/wiesbaden/nachrichten-wiesbaden/wiesbadener-student-siegt-in-ard-quizshow_14514198.htm" target="_blank">Wiesbadener Student siegt in ARD-Quizshow</a> <i>Wiesbadener Kurier</i>
+            </p>
+
+            <h4 class="padding-top-25">28. August 2014</h4>
+            <p>
+                <a href="http://www.daserste.de/unterhaltung/quiz-show/quizonkel-tv/sendung/quizonkel-tv-28082014-die-superchance-100.html" target="_blank">Dominik Neu gewinnt "Die Superchance"</a> <i>Das Erste</i>
+            </p>
+            <p>
+                <a href="http://www.sensor-wiesbaden.de/student-aus-wiesbaden-gewinnt-bei-pilawas-superchance-50-000-euro-fur-seine-start-up-idee/" target="_blank">Student aus Wiesbaden gewinnt bei Pilawas “Superchance” 50.000 Euro für seine Start-up-Idee</a> <i>sensor Magazin - Wiesbaden</i>
+            </p>
+            <p>
+                <a href="http://www.wiesbadener-kurier.de/lokales/wiesbaden/nachrichten-wiesbaden/wiesbadener-student-heute-in-pilawas-quizshow-die-superchance_14506476.htm" target="_blank">Wiesbadener Student heute in Pilawas Quizshow „Die Superchance“</a> <i>Wiesbadener Kurier</i>
+            </p>
+
+            <h4 class="padding-top-25">Links zu "Die Superchance"</h4>
+            <p>
+                <a href="http://www.daserste.de/unterhaltung/quiz-show/quizonkel-tv/videos/die-superchance-100.html" target="_blank">Video: Die Superchance</a> <i>ARD Mediathek</i>
+            </p>
+            <p>
+                <a href="http://www.daserste.de/unterhaltung/quiz-show/quizonkel-tv/videos/dominik-neu-21-aus-wiesbaden-100.html" target="_blank">Video: Dominik Neu stellt das Projekt vor</a> <i>ARD Mediathek</i>
+            </p>
+        </div>
+    </div>
+{% endblock "content" %}
+
+{% block "scrollScript" %}
+        <script type="text/javascript" src="{% static "js/presse.scroll.js" %}"></script>
+{% endblock "scrollScript" %}
