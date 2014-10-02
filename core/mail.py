@@ -78,7 +78,7 @@ def renderContent(markdown_content, unsubscribe_id=None):
 	# Convert markdown to html (mark_safe is needed to prevent the html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
-	html = render_to_string('core/base_mail.html', content_dic)
+	html = render_to_string('core/base_mail_inline.html', content_dic)
 	# Inline css styles
 	html = premailer.transform(html)
 
