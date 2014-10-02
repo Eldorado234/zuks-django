@@ -29,3 +29,17 @@ class Newsletter(models.Model):
 
 	def __unicode__(self):
 		return self.subject
+
+
+class ContactMail(models.Model):
+	recipient = "info@zuks.org"
+	subject = "ZUKS Kontaktanfrage"
+	
+	name = models.CharField(max_length=100, verbose_name="Name")
+	sender = models.EmailField(max_length=128, verbose_name="Email-Adresse")
+	contact_date = models.DateTimeField(auto_now_add=True, verbose_name="Datum")
+	sendersubject = models.CharField(max_length=100, verbose_name="Betreff")
+	content = models.TextField(verbose_name="Anliegen")
+
+	def __unicode__(self):
+		return self.subject
