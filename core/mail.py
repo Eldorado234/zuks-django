@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from markdown import Markdown
 import premailer
-import smtplib
+from django.core.mail import send_mail
 
 def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=True):
 	"""
@@ -25,9 +25,6 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
       									False otherwise
 
 	"""
-	
-	# Init mail sender
-	s = smtplib.SMTP('localhost')
 
 	# Send mails to the receiver
 	for receiver in receivers:
@@ -35,19 +32,7 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
 		uid = receiver.confirm_id if display_unsubscribe else None
 		text, html = renderContent(markdown_content, uid)
 
-		msg = MIMEMultipart('alternative')
-		msg['Subject'] = subject
-		msg['From'] = sender
-		msg['To'] = receiver.email
-
-		# Set the content of the mail
-		msg.attach(MIMEText(text, 'plain', 'utf-8'))
-		msg.attach(MIMEText(html, 'html', 'utf-8'))	
-
-		s.sendmail(sender, receiver.email, msg.as_string())
-
-	# Quit mail client connection
-	s.quit()
+		send_mail(subject, text, sender, [receiver.email], html_message=html)
 
 def renderContent(markdown_content, unsubscribe_id=None):
 	"""
