@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+
+{{ content }}
+
+---
+
+Zivile Unterstützung im Katastrophenschutz (ZUKS)
+Website: www.zuks.org
+Kontakt: info@zuks.org
+
+{% if unsubscribe_id %}
+Newsletter abbestellen: {{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}
+{% endif %}
+ 
