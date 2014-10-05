@@ -37,8 +37,8 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
 def renderContent(markdown_content, unsubscribe_id=None):
 	"""
 		Converts the markdown content to a raw text and a html version that could
-		be used as content in an email. The text is embedded in the core/base_mail.txt, 
-		the html in the core/base_mail.html template.
+		be used as content in an email. The text is embedded in the core/mail/base_mail.txt, 
+		the html in the core/mail/base_mail_inline.html template.
 
 		Args:
       		markdown_content (string): the content in a valid markdown syntax
@@ -58,12 +58,12 @@ def renderContent(markdown_content, unsubscribe_id=None):
 	}
 
 	# Render text
-	text = render_to_string('core/base_mail.txt', content_dic)
+	text = render_to_string('core/mail/base_mail.txt', content_dic)
 
 	# Convert markdown to html (mark_safe is needed to prevent the html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
-	html = render_to_string('core/base_mail_inline.html', content_dic)
+	html = render_to_string('core/mail/base_mail_inline.html', content_dic)
 	# Inline css styles
 	html = premailer.transform(html)
 
