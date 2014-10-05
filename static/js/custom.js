@@ -59,45 +59,7 @@ $(function () {
         });
     });
 
-    var defaultError = 'Die Anfrage konnte leider nicht bearbeitet werden. Versuchen Sie es sp&auml;ter erneut.';
-
-    // newsletter feedback
-    $('.submit-newsletter').on('click', function(e) {
-        e.preventDefault();
-        
-        $.ajax({
-            type: 'POST',
-            url: 'newsletter.php?subscribe=1',
-            data: $('#newsletterform').serialize(),
-            contentType: 'application/x-www-form-urlencoded',
-            success: function(e) {
-                $('#newsletterform .success').hide();
-                $('#newsletterform .error').hide();
-                if(e.status == true) {
-                    $('#newsletterform .success').html(e.msg);
-                    $('#newsletterform .success').show();
-                } else {
-                    $('#newsletterform .error').html(e.msg);
-                    $('#newsletterform .error').show();
-                }
-            }, 
-            error: function() {
-                alert("error");
-                $('#newsletterform .success').hide();
-                $('#newsletterform .error').html(defaultError);
-                $('#newsletterform .error').show();
-            }
-        });
+    $('#newsletterform').ajaxForm(function(returnVal) {
+        $('#newsletterform').html($(returnVal).html());
     });
 });
-
-function scrollTo(elem) {
-   /* $('body,html').animate({
-        scrollTop: elem.offset().top
-    }, 500);*/
-}
-
-function valemail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
