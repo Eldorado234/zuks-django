@@ -107,9 +107,9 @@
                                                                     <tr>
                                                                         <td align="center">
                                                                             <center>
-                                                                                <p style="text-align:center;"><a href="http://www.zuks.org/impressum.html">Impressum</a> | <a href="http://www.zuks.org/impressum.html#datenschutz">Datenschutz</a> | 
+                                                                                <p style="text-align:center;"><a href="http://www.zuks.org/impressum.html">Impressum</a> | <a href="http://www.zuks.org/impressum.html#datenschutz">Datenschutz</a> 
                                                                                     {% if unsubscribe_id %}
-                                                                                    <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}">Abbestellen</a>
+                                                                                    | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}">Abbestellen</a>
                                                                                 </p>
                                                                                 {% endif %}
                                                                             </center>
