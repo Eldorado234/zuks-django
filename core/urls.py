@@ -7,5 +7,7 @@ urlpatterns = patterns('',
 	url(r'^konzept/$', views.konzept, name='konzept'),
 	url(r'^$', views.index, name='index'),
 	url(r'^send_contactmail/$', views.send_contactmail, name='send_contactmail'),
+	url(r'^subscribe/$', views.subscribeToNewsletter, name='subscribe'),
+	url(r'^confirm/(?P<id>.+)/$', views.confirmNewsletter, name='confirm'),
 	url(r'^unsubscribe/(?P<id>.+)/$', views.unsubscribeFromNewsletter, name='unsubscribe'),
 )
