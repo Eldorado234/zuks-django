@@ -1,0 +1,18 @@
+ <form id="newsletterform" role="form" method="post" action="{% url "subscribe" %}">
+ 	{% csrf_token %}
+
+    <input type="email" class="newsletter-field" placeholder="E-Mail-Adresse" name="email" />
+
+    {% if success %}
+	    <div class="success">
+	        Wir haben Dir eine Best&auml;tigungsmail gesendet. 
+			Schaue bitte auch in deinem Spam-Ordner nach, wenn die Mail nicht ankommt.
+	    </div>
+    {% elif error %}
+	    <div class="error">
+	        {{ error }}
+	    </div>
+	{% endif %}
+
+    <button class="submit-newsletter">Newsletter abonnieren</button>
+</form>

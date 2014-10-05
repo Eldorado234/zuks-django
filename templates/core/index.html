@@ -76,16 +76,7 @@
                     <div class="col-lg-4">
                         <img src="{% static "img/icons/icon-newsletter.png" %}" class="content-icon" alt="Newsletter Icon"/>
                         <h4>Bleib dran!</h4>
-                        <form id="newsletterform" role="form" method="post" action="newsletter.php?subscribe=1">
-                            <input type="email" class="newsletter-field" placeholder="E-Mail-Adresse" name="email" />
-                            <div class="success">
-                                Sie wurden erfolgreich in den Newsletter eingetragen!
-                            </div>
-                            <div class="error">
-                                Die Anfrage konnte leider nicht bearbeitet werden. Versuchen Sie es sp&auml;ter erneut.
-                            </div>
-                            <button class="submit-newsletter">Newsletter abonnieren</button>
-                        </form>
+                        {% include 'core/subscribe_form.html' %}
 
                         <div class="social-buttons">
                             <div class="social-button-wrapper">
