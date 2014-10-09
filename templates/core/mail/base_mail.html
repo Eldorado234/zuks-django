@@ -25,7 +25,7 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td class="six sub-columns">
-                                                                                <a href="http://www.zuks.org"><img class="logo" src="http://www.zuks.org/img/logo/logo-weiss@300.png" style="
+                                                                                <a href="{{ settings.BASE_URL }}"><img class="logo" src="{{ settings.BASE_URL }}{% static 'img/logo/logo-weiss@300.png' %}" style="
                                                                                     height: 45px;
                                                                                     "></a>
                                                                             </td>
@@ -79,13 +79,13 @@
                                                                             <center>
                                                                                 <p class="socials">
                                                                                     <a href="https://www.facebook.com/zuks.org" title="ZUKS Facebook Seite">
-                                                                                    <img src="http://www.zuks.org/img/icons/social/facebook.png" alt="ZUKS Facebook Seite">
+                                                                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/facebook.png' %}" alt="ZUKS Facebook Seite">
                                                                                     </a>
                                                                                     <a href="https://plus.google.com/+ZuksOrg" title="ZUKS Google+ Seite">
-                                                                                    <img src="http://www.zuks.org/img/icons/social/google+.png" alt="ZUKS Google+ Seite">
+                                                                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/google+.png' %}" alt="ZUKS Google+ Seite">
                                                                                     </a>
                                                                                     <a href="https://twitter.com/zuksDE" title="ZUKS Twitter Seite">
-                                                                                    <img src="http://www.zuks.org/img/icons/social/twitter.png" alt="ZUKS Twitter Seite">
+                                                                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/twitter.png' %}" alt="ZUKS Twitter Seite">
                                                                                     </a>
                                                                                 </p>
                                                                             </center>
@@ -107,7 +107,9 @@
                                                                     <tr>
                                                                         <td align="center">
                                                                             <center>
-                                                                                <p style="text-align:center;"><a href="http://www.zuks.org/impressum.html">Impressum</a> | <a href="http://www.zuks.org/impressum.html#datenschutz">Datenschutz</a> 
+                                                                                <p style="text-align:center;">
+                                                                                  <a href="{{ settings.BASE_URL }}{% url 'impressum' %}">Impressum</a> |
+                                                                                  <a href="{{ settings.BASE_URL }}{% url 'impressum' %}#datenschutz">Datenschutz</a>
                                                                                     {% if unsubscribe_id %}
                                                                                     | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}">Abbestellen</a>
                                                                                 </p>
