@@ -14,20 +14,18 @@
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
-  <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      ZUKS</a></li>
-  <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Idee</a></li>
-  <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Team</a></li>
-  <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Motivation</a></li>
-  <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Kontakt</a></li>
-  <li><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Konzept</a></li>
-  <li><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Presse</a></li>
+  <li>
+      <a href="http://www.zuks.org" data-toggle="collapse" data-target=".navbar-responsive-collapse">&#8592; ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#impressum" data-toggle="collapse" data-target=".navbar-responsive-collapse">Impressum</a>
+  </li>
+  <li>
+      <a href="#haftungsausschluss" data-toggle="collapse" data-target=".navbar-responsive-collapse">Haftungsausschluss</a>
+  </li>
+  <li>
+      <a href="#datenschutz" data-toggle="collapse" data-target=".navbar-responsive-collapse">Datenschutzerkl&auml;rung</a>
+  </li>
 {% endblock "mobile_menu" %}
 
 {% block "content" %}
