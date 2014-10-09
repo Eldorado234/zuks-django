@@ -1,4 +1,4 @@
-{% extends "core/base.html" %} 
+{% extends "core/base.html" %}
 {% load staticfiles %}
 
 {% block "metadata" %}
@@ -38,7 +38,7 @@
                         <img src="{% static "img/icons/icon-motivation.png" %}" class="content-icon" alt="Motivation Icon"/>
                         <h4>Katastrophen passieren immer wieder</h4>
                         <p>
-                             Sind wir nicht direkt von einem Ungl&uuml;ck betroffen, sitzen wir ersch&uuml;ttert vor dem Fernseher und lassen uns machtlos das Leid anderer pr&auml;sentieren. Das muss nicht sein!                      
+                             Sind wir nicht direkt von einem Ungl&uuml;ck betroffen, sitzen wir ersch&uuml;ttert vor dem Fernseher und lassen uns machtlos das Leid anderer pr&auml;sentieren. Das muss nicht sein!
                         </p>
                     </div>
                     <div class="col-lg-4">
@@ -52,7 +52,7 @@
                         <img src="{% static "img/icons/icon-funktion.png" %}" class="content-icon" alt="Funktion Icon"/>
                         <h4>Wie soll das funktionieren?</h4>
                         <p>
-                            Du registrierst dich bei uns und wir kontaktieren dich im Falle einer Katastrophe. W&auml;hrend Du im Einsatz bist, &uuml;bernehmen wir die Planung und Versorgung. Du hilfst &ndash; wir koordinieren! 
+                            Du registrierst dich bei uns und wir kontaktieren dich im Falle einer Katastrophe. W&auml;hrend Du im Einsatz bist, &uuml;bernehmen wir die Planung und Versorgung. Du hilfst &ndash; wir koordinieren!
                         </p>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                 <div class="fb-like" data-href="https://facebook.com/zuks.org" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
             </h2>
         </div>
     </div>
-    
+
     <div id="team" class="jumper">
     </div>
     <div class="section type-3">
@@ -181,7 +181,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!--end:.row-->
             <div class="row">
                 <div class="col-lg-4 padding-top-50">
@@ -441,16 +441,12 @@
 {% include "core/footer.html" %}
 {% endblock "content" %}
 
+{% block "scripts" %}
+  <script type="text/javascript" src="{% static "js/index.scroll.js" %}"></script>
 
-{% block "scrollScript" %}
-        <script type="text/javascript" src="{% static "js/index.scroll.js" %}"></script>
-{% endblock "scrollScript" %}
-
-
-{% block "script" %}
 	<script type="text/javascript">
       window.___gcfg = {lang: 'de'};
-     
+
       (function() {
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/platform.js';
@@ -469,4 +465,4 @@
       js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=154754951342231&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-{% endblock "script" %}
+{% endblock "scripts" %}

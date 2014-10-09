@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                        <span class="sr-only">Toggle navigation</span> 
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span><span class="icon-bar"></span>
                     </button>
@@ -76,7 +76,7 @@
     {% block "content" %}
     {% endblock "content" %}
 
-    
+
     <!--Scripts-->
     <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
@@ -87,14 +87,9 @@
     <script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>
     <script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
     <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
-    
 
-    {% block "scrollScript" %}
-    {% endblock "scrollScript" %}
-
-
-    {% block "script" %}
-    {% endblock "script" %}
+    {% block "scripts" %}
+    {% endblock "scripts" %}
 
     <!-- Piwik -->
     <script type="text/javascript">
