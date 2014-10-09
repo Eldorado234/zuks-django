@@ -5,6 +5,24 @@
     <meta name="description" content="ZUKS Newsletter Anmeldung">
 {% endblock "metadata" %}
 
+{% block "menu" %}
+  <li><a href="http://www.zuks.org" class="back">Zur&uuml;ck zu ZUKS</a></li>
+  <li class="active"><a href="#jump1">Newsletter</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+    <a href="http://www.zuks.org" data-toggle="collapse" data-target=".navbar-responsive-collapse" class="back">
+      Zur&uuml;ck zu ZUKS
+    </a>
+  </li>
+  <li class="active">
+    <a href="#" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Newsletter
+    </a>
+  </li>
+{% endblock "mobile_menu" %}
+
 {% block "content" %}
     <div class="section type-3">
       <div class="container">

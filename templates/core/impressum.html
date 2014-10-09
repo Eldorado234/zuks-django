@@ -6,6 +6,30 @@
     <meta name="keywords" content="Impressum Haftungsausschluss Datenschutz Datenschutzerkl&auml;rung">
 {% endblock "metadata" %}
 
+{% block "menu" %}
+  <li><a href="http://www.zuks.org" class="back">ZUKS</a></li>
+  <li class="active"><a href="#impressum">Impressum</a></li>
+  <li><a href="#haftungsausschluss">Haftungsausschluss</a></li>
+  <li><a href="#datenschutz">Datenschutzerkl&auml;rung</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      ZUKS</a></li>
+  <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Idee</a></li>
+  <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Team</a></li>
+  <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Motivation</a></li>
+  <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Kontakt</a></li>
+  <li><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Konzept</a></li>
+  <li><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Presse</a></li>
+{% endblock "mobile_menu" %}
+
 {% block "content" %}
     <div class="jumper" id="impressum"></div>
     <div class="section type-2 impressum">

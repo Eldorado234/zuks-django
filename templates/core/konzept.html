@@ -6,6 +6,28 @@
     <meta name="keywords" content="ZUKS Konzept Einsatz Motivation Idee Technik Technische Unterst&uuml;tzung Versicherung">
 {% endblock "metadata" %}
 
+{% block "menu" %}
+  <li><a href="http://www.zuks.org" class="back">ZUKS</a></li>
+  <li class="active"><a href="#konzept">Konzept</a></li>
+  <li><a href="#einsatz">Einsatz</a></li>
+  <li><a href="#technik">Technik</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="http://www.zuks.org" data-toggle="collapse" data-target=".navbar-responsive-collapse">&#8592; ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#konzept" data-toggle="collapse" data-target=".navbar-responsive-collapse">Konzept</a>
+  </li>
+  <li>
+      <a href="#einsatz" data-toggle="collapse" data-target=".navbar-responsive-collapse">Einsatz</a>
+  </li>
+  <li>
+      <a href="#technik" data-toggle="collapse" data-target=".navbar-responsive-collapse">Technik</a>
+  </li>
+{% endblock "mobile_menu" %}
+
 {% block "content" %}
     <div class="jumper" id="konzept"></div>
     <div class="section type-1 concept-section">

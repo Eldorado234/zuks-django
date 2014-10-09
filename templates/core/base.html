@@ -40,32 +40,15 @@
                 </div>
                 <div class="collapse navbar-collapse hidden-xs">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#zuks">ZUKS</a></li>
-                        <li><a href="#idee">Idee</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#motivation">Motivation</a></li>
-                        <li><a href="#kontakt">Kontakt</a></li>
-                        <li><a href="{% url "konzept" %}">Konzept</a></li>
-                        <li><a href="{% url "presse" %}">Presse</a></li>
+                        {% block "menu" %}
+                        {% endblock "menu" %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
                 <div class="collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            ZUKS</a></li>
-                        <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Idee</a></li>
-                        <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Team</a></li>
-                        <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Motivation</a></li>
-                        <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Kontakt</a></li>
-                        <li><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Konzept</a></li>
-                        <li><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            Presse</a></li>
+                        {% block "mobile_menu" %}
+                        {% endblock "mobile_menu" %}
                     </ul>
                 </div>
                 <!-- /.navbar-responsive-collapse -->

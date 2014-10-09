@@ -6,6 +6,33 @@
     <meta name="keywords" content="ZUKS Zivile Unterst&uuml;tzung Katastrophenschutz Organisation Hilfe Freiwillig">
 {% endblock "metadata" %}
 
+{% block "menu" %}
+  <li class="active"><a href="#zuks">ZUKS</a></li>
+  <li><a href="#idee">Idee</a></li>
+  <li><a href="#team">Team</a></li>
+  <li><a href="#motivation">Motivation</a></li>
+  <li><a href="#kontakt">Kontakt</a></li>
+  <li><a href="{% url "konzept" %}">Konzept</a></li>
+  <li><a href="{% url "presse" %}">Presse</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li class="active"><a href="#zuks" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      ZUKS</a></li>
+  <li><a href="#idee" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Idee</a></li>
+  <li><a href="#team" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Team</a></li>
+  <li><a href="#motivation" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Motivation</a></li>
+  <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Kontakt</a></li>
+  <li><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Konzept</a></li>
+  <li><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      Presse</a></li>
+{% endblock "mobile_menu" %}
+
 {% block "content" %}
     <div class="jumper" id="zuks">
     </div>

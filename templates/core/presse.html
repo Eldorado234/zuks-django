@@ -6,6 +6,20 @@
     <meta name="keywords" content="ZUKS Presse Artikel Presseartikel">
 {% endblock "metadata" %}
 
+{% block "menu" %}
+  <li><a href="http://www.zuks.org" class="back">ZUKS</a></li>
+  <li class="active"><a href="#impressum">Presse</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="http://www.zuks.org" data-toggle="collapse" data-target=".navbar-responsive-collapse">&#8592; ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#impressum" data-toggle="collapse" data-target=".navbar-responsive-collapse">Presse</a>
+  </li>
+{% endblock "mobile_menu" %}
+
 {% block "content" %}
   <div class="jumper" id="impressum"></div>
     <div class="section type-2 impressum">
