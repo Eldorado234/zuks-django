@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block "metadata" %}
+    <meta name="description" content="ZUKS Newsletter Anmeldung">
+{% endblock "metadata" %}
+
+{% block "content" %}
+    <div class="section type-3">
+      <div class="container">
+          {% if status == 'expired' %}
+            <h2>Best&auml;tigungslink anfordern</h2>
+            <p>
+                Dein Best&auml;tigungslink ist leider abgelaufen.
+                Kopf hoch, hier kannst Du Dich erneut eintragen:
+                {% include 'core/subscribe_form.html' %}
+            </p>
+          {% else %}
+            <h1>Willkommen bei ZUKS,</h1>
+            <h2>Du hast Dich erfolgreich für unseren Newsletter eingetragen.</h2>
+            <p>
+              Wir werden Dich informieren, sobald es Neuigkeiten bei der Entwicklung
+              zu vermelden gibt und Dich so über den Projektstatus auf dem Laufenden halten.
+            </p>
+            <p>
+              Über unsere sozialen Kan&auml;le erhälst Du regelm&auml;&szlig;ige
+              Updates rund um ZUKS und kannst Dich mit anderen Unterst&uuml;tzern
+              austauschen.
+            </p>
+          {% endif %}
+
+          {% include 'core/stay_tuned.html' %}
+      </div>
+  </div>
+{% endblock "content" %}
+
+{% block "scrollScript" %}
+        <script type="text/javascript" src="{% static "js/impressum.scroll.js" %}"></script>
+{% endblock "scrollScript" %}
