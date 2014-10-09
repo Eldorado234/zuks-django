@@ -106,7 +106,7 @@ def confirmNewsletter(request, id):
 	except NewsletterRecipient.DoesNotExist:
 		status = 'expired'
 
-	return render_to_response('core/confirm.html', {status : status}, context)
+	return render_to_response('core/confirm.html', {'status' : status}, context)
 
 
 
