@@ -7,13 +7,13 @@
 {% endblock "metadata" %}
 
 {% block "menu" %}
-  <li><a href="http://www.zuks.org" class="back">ZUKS</a></li>
+  <li><a href="{% url "index" %}" class="back">ZUKS</a></li>
   <li class="active"><a href="#impressum">Presse</a></li>
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
   <li>
-      <a href="http://www.zuks.org" data-toggle="collapse" data-target=".navbar-responsive-collapse">&#8592; ZUKS</a>
+      <a href="{% url "index" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">&#8592; ZUKS</a>
   </li>
   <li class="active">
       <a href="#impressum" data-toggle="collapse" data-target=".navbar-responsive-collapse">Presse</a>
