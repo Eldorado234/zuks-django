@@ -108,7 +108,15 @@ def confirmNewsletter(request, id):
 
 	return render_to_response('core/confirm.html', {'status' : status}, context)
 
+def unsubscribeFromNewsletter(request, id):
+	context = RequestContext(request)
+	status = 'success'
 
+	try:
+		recp = NewsletterRecipient.objects.get(confirm_id=id)
+		recp.delete()
+	except NewsletterRecipient.DoesNotExist:
+		# Is already unsubscribed, nothing to do
+		pass
 
-def unsubscribeFromNewsletter(request):
-	pass
+	return render_to_response('core/unsubscribe.html', {}, context)
