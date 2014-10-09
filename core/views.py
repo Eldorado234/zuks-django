@@ -95,10 +95,20 @@ def subscribeToNewsletter(request):
 
 	return render_to_response('core/subscribe_form.html', context_dic, context)
 
-		
+def confirmNewsletter(request, id):
+	context = RequestContext(request)
+	status = 'success'
 
-def confirmNewsletter(request):
-	pass
+	try:
+		recp = NewsletterRecipient.objects.get(confirm_id=id)
+		recp.confirm()
+		recp.save()
+	except NewsletterRecipient.DoesNotExist:
+		status = 'expired'
+
+	return render_to_response('core/confirm.html', {status : status}, context)
+
+
 
 def unsubscribeFromNewsletter(request):
 	pass
