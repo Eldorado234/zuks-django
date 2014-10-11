@@ -1248,6 +1248,19 @@ body#concept .section p, body#concept .section li {
   line-height: 22px;
 }
 
+ul.errorlist {
+  color: #efefef;
+  list-style-type: none;
+  background-color: #d03556;
+  margin-top: 6px;
+  float: right;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;
