@@ -37,14 +37,14 @@
                         <a class="navbar-brand" href="{% url "index" %}#"><img src="{% static "img/logo/logo@300.png" %}" alt="ZUKS Logo" /></a>
                     {% endblock "logo" %}
                 </div>
-                <div class="collapse navbar-collapse hidden-xs">
+                <div class="collapse navbar-collapse hidden-xs" id="default-menu">
                     <ul class="nav navbar-nav navbar-right">
                         {% block "menu" %}
                         {% endblock "menu" %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
-                <div class="collapse navbar-responsive-collapse">
+                <div class="collapse navbar-responsive-collapse" id="mobile-menu">
                     <ul class="nav navbar-nav">
                         {% block "mobile_menu" %}
                         {% endblock "mobile_menu" %}
@@ -63,7 +63,6 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% static "js/jquery.smooth-scroll.min.js" %}"></script>
-
     <script type="text/javascript" src="{% static "js/jquery.form.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/jquery.easing.1.3.js" %}" ></script>
     <script type="text/javascript" src="{% static "js/modernizr.js" %}"></script>

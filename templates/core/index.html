@@ -12,8 +12,8 @@
   <li><a href="#team">Team</a></li>
   <li><a href="#motivation">Motivation</a></li>
   <li><a href="#kontakt">Kontakt</a></li>
-  <li><a href="{% url "konzept" %}">Konzept</a></li>
-  <li><a href="{% url "presse" %}">Presse</a></li>
+  <li class="new-page"><a href="{% url "konzept" %}">Konzept</a></li>
+  <li class="new-page"><a href="{% url "presse" %}">Presse</a></li>
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
@@ -27,9 +27,9 @@
       Motivation</a></li>
   <li><a href="#kontakt" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       Kontakt</a></li>
-  <li><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+  <li class="new-page"><a href="{% url "konzept" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       Konzept</a></li>
-  <li><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+  <li class="new-page"><a href="{% url "presse" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       Presse</a></li>
 {% endblock "mobile_menu" %}
 

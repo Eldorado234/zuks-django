@@ -1278,6 +1278,23 @@ ul.errorlist {
   }
 }
 
+
+#default-menu .new-page {
+  border-left: 1px dashed #4d9eff;
+}
+
+#default-menu .back {
+  border-right: 1px dashed #4d9eff;
+}
+
+#mobile-menu .new-page {
+  border-top: 1px dashed #4d9eff;
+}
+
+#mobile-menu .back {
+  border-bottom: 1px dashed #4d9eff;
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;
