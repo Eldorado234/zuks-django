@@ -11,7 +11,6 @@ from core.models import NewsletterRecipient
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
-from django.conf import settings
 import logging
 
 def index(request):
@@ -72,7 +71,7 @@ def subscribeToNewsletter(request):
 			recp = NewsletterRecipient(email=email)
 			recp.save()
 
-			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id, 'settings' : settings})
+			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id})
 			mail.sendMail('info@zuks.org', [recp], text, 'ZUKS Newsletter Registrierung',  display_unsubscribe=False)
 
 			context_dic['success'] = True

@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from email.mime.multipart import MIMEMultipart
@@ -17,9 +16,9 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
       		receivers (array): 			an array with receivers. Each receiver has
       									to have the two attributes `email` and
       									`confirm_id`. The second attribute is used to
-      									generate the unsubscribe link in the mail. 
+      									generate the unsubscribe link in the mail.
       		markdown_content (string):	the content of the mail encoded in the markdown
-      									markup language. 
+      									markup language.
       		subject (string):			the subject of the mail.
       		display_unsubscribe (bool): True, if the unsubscribe link should be displayed,
       									False otherwise
@@ -37,24 +36,23 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
 def renderContent(markdown_content, unsubscribe_id=None):
 	"""
 		Converts the markdown content to a raw text and a html version that could
-		be used as content in an email. The text is embedded in the core/mail/base_mail.txt, 
+		be used as content in an email. The text is embedded in the core/mail/base_mail.txt,
 		the html in the core/mail/base_mail_inline.html template.
 
 		Args:
       		markdown_content (string): the content in a valid markdown syntax
-      		unsubscribe_id   (string): the id which could be used by the user to 
-      								   unsubscribe from the newsletter. Is embedded 
+      		unsubscribe_id   (string): the id which could be used by the user to
+      								   unsubscribe from the newsletter. Is embedded
       								   in the unsubscribe link in the templates.
 
       	Returns:
-      		a tuple with the text version at the first index and 
+      		a tuple with the text version at the first index and
       		the html version at the second
 	"""
 
 	content_dic = {
 		'content' 			: markdown_content,
-		'unsubscribe_id' 	: unsubscribe_id,
-		'settings'			: settings
+		'unsubscribe_id' 	: unsubscribe_id
 	}
 
 	# Render text
