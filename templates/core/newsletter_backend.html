@@ -1,0 +1,93 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block "metadata" %}
+    <meta name="description" content="Admin Interface um Newsletter zu versenden">
+    <style type="text/css" media="screen">
+        .vertMargin {
+            margin-top: 10px;
+        }
+    </style>
+{% endblock "metadata" %}
+
+{% block "menu" %}
+  <li><a href="{% url "admin:index" %}" class="back">Administration</a></li>
+  <li class="active"><a href="#mail">Newsletter</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="{% url "admin:index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">Administration</a>
+  </li>
+  <li class="active">
+      <a href="#mail" data-toggle="collapse" data-target=".navbar-responsive-collapse">Newsletter</a>
+  </li>
+{% endblock "mobile_menu" %}
+
+{% block "content" %}
+    <div class="section type-2" style="padding-top: 100px">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-lg-5" class="vertMargin">
+                        <h2>
+                            Editor
+                            <a href="http://support.mashery.com/docs/read/customizing_your_portal/Markdown_Cheat_Sheet" class="btn btn-info btn-xs" target="_blank" >Markdown Hilfe</a>
+                        </h2>
+                        <form action="#" method="POST" accept-charset="utf-8" id="mail-content-form"  class="vertMargin">
+                            {% csrf_token %}
+                            <input type="text" name="subject" id="subject" placeholder="Betreff" class="form-control vertMargin" />
+                            <textarea name="content" id="content" rows="20" cols="50" class="form-control vertMargin" placeholder="Markdown Text"></textarea>
+                        </form>
+                        <div  class="vertMargin">
+                            <button id="send" class="btn btn-primary pull-right">Senden</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-7" >
+                       <h2>
+                           Vorschau
+                           <button class="btn btn-primary btn-xs" id="update_preview">Aktualisieren</button>
+                       </h2>
+                       <div id="render" class="vertMargin"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock "content" %}
+
+{% block "scripts" %}
+    <script type="text/javascript" charset="utf-8">
+        $("#render").load("{% url 'admin:newsletter-template' %}");
+
+        var should_request = true;
+        var updateContent = function() {
+            if (should_request) {
+                should_request = false;
+                $("#render").load("{% url 'admin:newsletter-template' %}", {
+                    'content' : $("#content").val(),
+                    'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
+                });
+                setTimeout(function() {
+                    should_request = true;
+                }, 500);
+            }
+        };
+
+        $('#update_preview').click(updateContent);
+        $('#content').on('change keyup paste', updateContent);
+
+        $("#send").on('click', function() {
+            if (confirm("Nachricht an alle Abonenten versenden")) {
+                $.post('send_newsletter_email.php', {
+                    subject: $('#subject').val(),
+                    text: conv.makeHtml($("#content").val()),
+                    content: $("#render").html()
+                }, function(data) {
+                    alert(data);
+                });
+            }
+        });
+    </script>
+{% endblock %}
