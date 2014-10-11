@@ -1269,16 +1269,19 @@ body#concept .section p, body#concept .section li {
 }
 
 ul.errorlist {
-  color: #efefef;
-  list-style-type: none;
-  background-color: #d03556;
-  margin-top: 6px;
-  float: right;
-  border-radius: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+    color: #efefef;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    list-style-type: none;
+    background-color: #d03556;
+    margin-top: 6px;
+    float: right;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .navbar-default {
