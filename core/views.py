@@ -37,6 +37,9 @@ def redirect(sitename, request):
 
 
 def send_contactmail(request):
+	'''
+	Called via ajax.
+	'''
 	context = RequestContext(request)
 
 	if request.method == 'POST':
@@ -55,7 +58,7 @@ def send_contactmail(request):
 	else:
 		form = ContactForm()
 
-	return render_to_response('core/index.html', {'form': form, 'contacts': Contact.objects.all() }, context)
+	return render_to_response('core/contact_form.html', {'form': form}, context)
 
 def subscribeToNewsletter(request):
 	'''
