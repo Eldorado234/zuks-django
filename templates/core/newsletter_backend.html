@@ -1,13 +1,9 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 
 {% block "metadata" %}
     <meta name="description" content="Admin Interface um Newsletter zu versenden">
-    <style type="text/css" media="screen">
-        .vertMargin {
-            margin-top: 10px;
-        }
-    </style>
 {% endblock "metadata" %}
 
 {% block "menu" %}
@@ -34,14 +30,22 @@
                             Editor
                             <a href="http://support.mashery.com/docs/read/customizing_your_portal/Markdown_Cheat_Sheet" class="btn btn-info btn-xs" target="_blank" >Markdown Hilfe</a>
                         </h2>
-                        <form action="#" method="POST" accept-charset="utf-8" id="mail-content-form"  class="vertMargin">
+                        <form action="{% url 'admin:core_newsletter_add' %}" id="newsletter_form" method="POST" accept-charset="utf-8" class="vertMargin">
                             {% csrf_token %}
-                            <input type="text" name="subject" id="subject" placeholder="Betreff" class="form-control vertMargin" />
-                            <textarea name="content" id="content" rows="20" cols="50" class="form-control vertMargin" placeholder="Markdown Text"></textarea>
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+                            <div class="form-group">
+                                {% render_field form.subject class="form-control" placeholder="Betreff" %}
+                                {{ form.subject.errors }}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.content class="form-control" placeholder="Markdown Text" rows="20" cols="50" %}
+                                {{ form.content.errors }}
+                            </div>
+
                         </form>
-                        <div  class="vertMargin">
-                            <button id="send" class="btn btn-primary pull-right">Senden</button>
-                        </div>
+                        <div><button id="send" class="btn btn-primary btn-block">Senden</button></div>
                     </div>
                     <div class="col-lg-7" >
                        <h2>
@@ -64,29 +68,24 @@
         var should_request = true;
         var updateContent = function() {
             if (should_request) {
+                // Timeout to prevent flooding the server
                 should_request = false;
-                $("#render").load("{% url 'admin:newsletter-template' %}", {
-                    'content' : $("#content").val(),
-                    'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
-                });
                 setTimeout(function() {
                     should_request = true;
                 }, 500);
+
+                $("#render").load("{% url 'admin:newsletter-template' %}",
+                    $('#newsletter_form').serializeArray()
+                );
             }
         };
 
         $('#update_preview').click(updateContent);
-        $('#content').on('change keyup paste', updateContent);
+        $('#id_content').on('change keyup paste', updateContent);
 
         $("#send").on('click', function() {
-            if (confirm("Nachricht an alle Abonenten versenden")) {
-                $.post('send_newsletter_email.php', {
-                    subject: $('#subject').val(),
-                    text: conv.makeHtml($("#content").val()),
-                    content: $("#render").html()
-                }, function(data) {
-                    alert(data);
-                });
+            if (confirm("Nachricht an alle Abonenten versenden?")) {
+                $('#newsletter_form').submit();
             }
         });
     </script>

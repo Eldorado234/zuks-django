@@ -5,14 +5,21 @@ from django.shortcuts import render_to_response
 from django.conf.urls import patterns, url
 from core import mail
 from core.models import Newsletter, NewsletterRecipient, ContactMail
+from core.forms import NewsletterForm
 
 class NewsletterAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'send_date')
+    list_display = ('subject', 'content', 'send_date')
     list_display_links = None
 
     def add_view(self, request):
         context = RequestContext(request)
-        return render_to_response('core/newsletter_backend.html', {}, context)
+        if request.POST:
+            form = NewsletterForm(request.POST)
+            if form.is_valid():
+                form.save()
+        else:
+            form = NewsletterForm()
+        return render_to_response('core/newsletter_backend.html', {'form' : form}, context)
 
     def newsletter_template(self, request):
         content = request.POST['content'] if request.POST else ''
