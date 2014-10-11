@@ -3,6 +3,7 @@
 
 from django.db import models
 from datetime import datetime
+from django.core.mail import send_mail
 import uuid
 
 
@@ -34,7 +35,8 @@ class Newsletter(models.Model):
 class ContactMail(models.Model):
 	recipient = "info@zuks.org"
 	subject = "ZUKS Kontaktanfrage"
-	
+	text_pattern = "Absender: {0}\nDatum: {1}\nBetreff: {2}\n\n{3}"
+
 	name = models.CharField(max_length=100, verbose_name="Name")
 	sender = models.EmailField(max_length=128, verbose_name="Email-Adresse")
 	contact_date = models.DateTimeField(auto_now_add=True, verbose_name="Datum")
@@ -43,3 +45,15 @@ class ContactMail(models.Model):
 
 	def __unicode__(self):
 		return self.subject
+
+	def save(self, *args, **kwargs):
+		super(ContactMail, self).save(*args, **kwargs)
+
+		# Send mail
+		text = self.text_pattern.format(
+			self.sender,
+			str(self.contact_date),
+			self.sendersubject,
+			self.content
+		)
+		send_mail(new_mail.subject, text, new_mail.sender, [new_mail.recipient])

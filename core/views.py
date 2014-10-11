@@ -40,30 +40,20 @@ def send_contactmail(request):
 	Called via ajax.
 	'''
 	context = RequestContext(request)
+	status = False
 
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		if form.is_valid():
-			new_mail = form.save()
-			# send Mail
-			print new_mail
-
-			text = "Absender: ${0}\nDatum: ${1}\nBetreff: ${2}\n\n${3}"
-			text = text.format(
-				new_mail.sender,
-				str(new_mail.contact_date),
-				new_mail.sendersubject,
-				new_mail.content
-			)
-			send_mail(new_mail.subject, text, new_mail.sender, [new_mail.recipient])
-
-			return index(request)
-		else:
-			print form.errors
+			form.save()
+			status = True
 	else:
 		form = ContactForm()
 
-	return render_to_response('core/contact_form.html', {'form': form}, context)
+	return render_to_response('core/contact_form.html', {
+			'form': form,
+			'success': status
+		}, context)
 
 def subscribeToNewsletter(request):
 	'''
