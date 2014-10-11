@@ -29,8 +29,7 @@
 {% endblock "mobile_menu" %}
 
 {% block "content" %}
-    <div class="jumper" id="impressum"></div>
-    <div class="section type-2 impressum">
+    <div class="section type-2 impressum" id="impressum">
         <div class="container">
             <h1>Impressum</h1>
 
@@ -74,8 +73,7 @@
         </div>
     </div>
 
-    <div class="jumper" id="haftungsausschluss"></div>
-    <div class="section type-3">
+    <div class="section type-3" id="haftungsausschluss">
         <div class="container">
             <h1>Haftungsausschluss (Disclaimer)</h1>
             <h3>Haftung f&uuml;r Inhalte</h3>
@@ -97,8 +95,7 @@
         </div>
     </div>
 
-    <div class="jumper" id="datenschutz"></div>
-    <div class="section type-2">
+    <div class="section type-2" id="datenschutz">
         <div class="container"><br /><h1>Datenschutzerkl&auml;rung:</h1>
             <h3>Datenschutz</h3>
             <p>
@@ -173,7 +170,3 @@
         </div>
     </div>
 {% endblock "content" %}
-
-{% block "scripts" %}
-        <script type="text/javascript" src="{% static "js/impressum.scroll.js" %}"></script>
-{% endblock "scripts" %}

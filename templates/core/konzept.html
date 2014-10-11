@@ -29,8 +29,7 @@
 {% endblock "mobile_menu" %}
 
 {% block "content" %}
-    <div class="jumper" id="konzept"></div>
-    <div class="section type-1 concept-section">
+    <div class="section type-1 concept-section" id="konzept">
         <div class="container motivation">
             <div class="row">
                 <div class="col-lg-6">
@@ -87,8 +86,7 @@
         </div>
     </div>
 
-    <div class="jumper" id="einsatz"></div>
-    <div class="section type-2">
+    <div class="section type-2" id="einsatz">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 padding-top-50">
@@ -149,8 +147,7 @@
         </div>
     </div>
 
-    <div class="jumper" id="technik"></div>
-    <div class="section type-3">
+    <div class="section type-3" id="technik">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -291,10 +288,6 @@
         </div>
     </div>
 
-{% include "core/footer.html" %}
+    {% include "core/footer.html" %}
 
 {% endblock "content" %}
-
-{% block "scripts" %}
-        <script type="text/javascript" src="{% static "js/konzept.scroll.js" %}"></script>
-{% endblock "scripts" %}
