@@ -1,0 +1,38 @@
+{% load widget_tweaks %}
+
+<form id="contactform" role="form" method="post" action="{% url "send_contactmail" %}">
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-6">
+              {% render_field form.name class="form-control" placeholder="Name *" %}
+              {{ form.name.errors }}
+              <br class="gap-15" />
+            </div>
+            <div class="col-lg-6">
+              {% render_field form.sender class="form-control" placeholder="E-Mail Adresse *" %}
+              {{ form.sender.errors }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      {% render_field form.sendersubject class="form-control" placeholder="Betreff" %}
+      {{ form.sendersubject.errors }}
+    </div>
+    <div class="form-group">
+      {% render_field form.content class="form-control" placeholder="Dein Text *" rows="8" %}
+      {{ form.content.errors }}
+    </div>
+    <div class="success">
+        Deine Nachricht wurde erfolgreich gesendet
+    </div>
+    <div class="error">
+        Die Nachricht konnte leider nicht gesendet werden
+    </div>
+
+    <input type="submit" name="submit" id="button-send" class="btn btn-block btn-success" value="Kontaktanfrage abschicken" />
+</form>

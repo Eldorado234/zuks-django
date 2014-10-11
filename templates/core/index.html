@@ -443,20 +443,7 @@
                     </div>
                 </div>-->
                 <div class="col-lg-7">
-                    <form id="contactform" method="post" action="{% url "send_contactmail" %}">
-                        {% csrf_token %}
-                        {% for hidden in form.hidden_fields %}
-                            {{ hidden }}
-                        {% endfor %}
-                        {% for field in form.visible_fields %}
-                            {{ field.errors }}
-                            {{ field.help_text }}
-                            {{ field.label }}
-                            {{ field }}
-                            <br />
-                        {% endfor %}
-                        <input type="submit" name="submit" value="Kontaktanfrage abschicken" />
-                    </form>
+                    {% include "core/contact_form.html" %}
                 </div>
                 <div class="col-lg-5">
                     <img src="{% static "img/logo/logo-bild-weiss@320.png" %}" alt="ZUKS Logo Bildmarke" class="content-icon-160" />

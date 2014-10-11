@@ -1121,22 +1121,23 @@ h4.headline {
   padding-bottom: 50px;
 }
 
-.section.type-1 .form-control, 
+.section.type-1 .form-control,
 .section.type-1 button {
   background-color: #f0f2f4;
   color: #666666;
 }
 
-#button-send , 
-#button-send:focus, 
+#button-send ,
+#button-send:focus,
 #button-send:active {
   color: #4d9eff;
   font-weight: bold;
   border-color: transparent;
   box-shadow: none;
+  background-color: #f0f2f4;
 }
 
-.section-contact .error, 
+.section-contact .error,
 .section-contact .success {
   margin-bottom: 13px;
   border-radius: 3px;
@@ -1196,7 +1197,7 @@ html.no-touch img.forward {
 
 .impressum {
   margin-top: 60px;
-} 
+}
 
 i.extern {
   color: #666666;
