@@ -32,7 +32,7 @@ def konzept(request):
 
 def redirect(sitename, request):
 	context = RequestContext(request)
-	return render_to_response('core/${0}.html'.format(sitename), {}, context)
+	return render_to_response('core/{0}.html'.format(sitename), {}, context)
 
 
 def send_contactmail(request):
