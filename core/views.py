@@ -108,7 +108,6 @@ def confirmNewsletter(request, id):
 
 def unsubscribeFromNewsletter(request, id):
 	context = RequestContext(request)
-	status = 'success'
 
 	try:
 		recp = NewsletterRecipient.objects.get(confirm_id=id)
