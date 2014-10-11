@@ -27,12 +27,12 @@
       {% render_field form.content class="form-control" placeholder="Dein Text *" rows="8" %}
       {{ form.content.errors }}
     </div>
-    <div class="success">
-        Deine Nachricht wurde erfolgreich gesendet
-    </div>
-    <div class="error">
-        Die Nachricht konnte leider nicht gesendet werden
-    </div>
+
+    {% if success %}
+      <div class="success">
+          Deine Nachricht wurde erfolgreich gesendet. Wir werden dir so bald wie m&ouml;glich antworten
+      </div>
+    {% endif %}
 
     <input type="submit" name="submit" id="button-send" class="btn btn-block btn-success" value="Kontaktanfrage abschicken" />
 </form>
