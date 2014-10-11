@@ -1260,6 +1260,24 @@ ul.errorlist {
   padding-bottom: 1px;
 }
 
+.navbar-default {
+  border-color: #4d9eff;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #4d9eff; /* default: #84c225 (green) */
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;
