@@ -922,10 +922,18 @@ html {
   height: 164px;
 }
 
+header.header {
+    height: 60px;
+}
+
 @media (max-width: 640px) {
   .header-logo-img {
     width: 350px;
     height: 96px;
+  }
+
+  header.header {
+      height: 50px;
   }
 }
 
@@ -1131,6 +1139,10 @@ h4.headline {
   padding-bottom: 50px;
 }
 
+.section:first-of-type {
+    padding-top: 50px;
+}
+
 .section.type-1 .form-control,
 .section.type-1 button {
   background-color: #f0f2f4;
@@ -1205,10 +1217,6 @@ html.no-touch img.forward {
   display: inline-block;
   padding-right: 10px;
   padding-bottom: 4px;
-}
-
-.impressum {
-  margin-top: 60px;
 }
 
 i.extern {
@@ -1307,6 +1315,8 @@ ul.errorlist {
 #mobile-menu .back {
   border-bottom: 1px dashed #4d9eff;
 }
+
+
 
 /*
 .testimonial {

@@ -8,7 +8,7 @@
 
 {% block "menu" %}
   <li><a href="{% url "index" %}" class="back">ZUKS</a></li>
-  <li class="active"><a href="#impressum">Presse</a></li>
+  <li class="active"><a href="#presse">Presse</a></li>
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
@@ -16,13 +16,12 @@
       <a href="{% url "index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">ZUKS</a>
   </li>
   <li class="active">
-      <a href="#impressum" data-toggle="collapse" data-target=".navbar-responsive-collapse">Presse</a>
+      <a href="#presse" data-toggle="collapse" data-target=".navbar-responsive-collapse">Presse</a>
   </li>
 {% endblock "mobile_menu" %}
 
 {% block "content" %}
-  <div class="jumper" id="impressum"></div>
-    <div class="section type-2 impressum">
+    <div class="section type-2 presse" id="presse">
         <div class="container">
             <h1>Presse</h1>
             <p>
