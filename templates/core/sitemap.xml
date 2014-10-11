@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>{{ settings.BASE_URL }}{% url 'index' %}</loc>
+    <lastmod>2014-08-29T13:39:48+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>{{ settings.BASE_URL }}{% url 'konzept' %}</loc>
+    <lastmod>2014-08-29T16:48:50+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>{{ settings.BASE_URL }}{% url 'presse' %}</loc>
+    <lastmod>2014-08-30T13:35:14+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>{{ settings.BASE_URL }}{% url 'impressum' %}</loc>
+    <lastmod>2014-10-06T12:08:11+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+</urlset>

@@ -33,6 +33,20 @@ def redirect(sitename, request):
 	context = RequestContext(request)
 	return render_to_response('core/{0}.html'.format(sitename), {}, context)
 
+def robots(request):
+	return render_to_response(
+		'core/robots.txt', {},
+		RequestContext(request), content_type="text/plain"
+	)
+
+def sitemap(request):
+	return render_to_response(
+		'core/sitemap.xml', {},
+		RequestContext(request), content_type="text/xml"
+	)
+
+def google_verification(request):
+	return render_to_response('core/google_verification.html', {}, RequestContext(request))
 
 def send_contactmail(request):
 	'''

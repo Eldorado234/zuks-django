@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /analytics
+
+Sitemap: {{ settings.BASE_URL }}{% url 'sitemap' %}
