@@ -5,7 +5,7 @@ urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
 
 	url(r'^impressum/$', views.static, {'site' : 'impressum.html'}, name='impressum'),
-	url(r'^presse/$', views.static, {'site' : 'impressum.html'}, name='presse'),
+	url(r'^presse/$', views.static, {'site' : 'presse.html'}, name='presse'),
 	url(r'^konzept/$', views.static, {'site' : 'konzept.html'}, name='konzept'),
 
 	url(r'^send_contactmail/$', views.send_contactmail, name='send_contactmail'),
