@@ -20,33 +20,13 @@ def index(request):
 
 	return render_to_response('core/index.html', context_dic, context)
 
-def impressum(request):
-	return redirect("impressum", request)
-
-def presse(request):
-	return redirect("presse",request)
-
-def konzept(request):
-	return redirect("konzept",request)
-
-def redirect(sitename, request):
-	context = RequestContext(request)
-	return render_to_response('core/{0}.html'.format(sitename), {}, context)
-
-def robots(request):
+def static(request, site, content_type="text/html"):
 	return render_to_response(
-		'core/robots.txt', {},
-		RequestContext(request), content_type="text/plain"
+		'core/{0}'.format(site),
+		{},
+		RequestContext(request),
+		content_type=content_type
 	)
-
-def sitemap(request):
-	return render_to_response(
-		'core/sitemap.xml', {},
-		RequestContext(request), content_type="text/xml"
-	)
-
-def google_verification(request):
-	return render_to_response('core/google_verification.html', {}, RequestContext(request))
 
 def send_contactmail(request):
 	'''
