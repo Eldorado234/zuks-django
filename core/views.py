@@ -32,8 +32,7 @@ def konzept(request):
 
 def redirect(sitename, request):
 	context = RequestContext(request)
-	context_dic = {}
-	return render_to_response('core/' + sitename + '.html', context_dic, context)
+	return render_to_response('core/${0}.html'.format(sitename), {}, context)
 
 
 def send_contactmail(request):
@@ -49,7 +48,13 @@ def send_contactmail(request):
 			# send Mail
 			print new_mail
 
-			text = "Absender: " + new_mail.sender + "\n" + "Datum: " + str(new_mail.contact_date) + "\n" + "Betreff: " + new_mail.sendersubject + "\n\n" + new_mail.content
+			text = "Absender: ${0}\nDatum: ${1}\nBetreff: ${2}\n\n${3}"
+			text = text.format(
+				new_mail.sender,
+				str(new_mail.contact_date),
+				new_mail.sendersubject,
+				new_mail.content
+			)
 			send_mail(new_mail.subject, text, new_mail.sender, [new_mail.recipient])
 
 			return index(request)
