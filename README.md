@@ -10,5 +10,5 @@ The official website of the ZUKS project. (www.zuks.org)
 - Execute `pip install -r requirements.txt`
 - Execute `python manage.py syncdb`
 - Execute `python manage.py collectstatic`
-- Configure the webserver to deliver all files from the url `/static/*` from the `/static` folder
+- Configure the webserver to deliver all files from the url `/static/*` from the `/static` folder _(optional when using the integrated web server `python manage.py runserver`)_
 - Install and configure [django-sentry](https://sentry.readthedocs.org/en/v1.13.5/install/index.html) to track application errors _(optional)_
