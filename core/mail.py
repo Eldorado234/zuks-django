@@ -6,7 +6,7 @@ from markdown import Markdown
 import premailer
 from django.core.mail import send_mail
 
-def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=True):
+def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=True, context=None):
 	"""
 		Sends a multipart to the receivers. Both, the raw text and the html,
 		are generated out of the markdown content.
@@ -29,11 +29,11 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
 	for receiver in receivers:
 
 		uid = receiver.confirm_id if display_unsubscribe else None
-		text, html = renderContent(markdown_content, uid)
+		text, html = renderContent(markdown_content, uid, context)
 
 		send_mail(subject, text, sender, [receiver.email], html_message=html)
 
-def renderContent(markdown_content, unsubscribe_id=None):
+def renderContent(markdown_content, unsubscribe_id=None, context=None):
 	"""
 		Converts the markdown content to a raw text and a html version that could
 		be used as content in an email. The text is embedded in the core/mail/base_mail.txt,
@@ -50,18 +50,23 @@ def renderContent(markdown_content, unsubscribe_id=None):
       		the html version at the second
 	"""
 
+	if not context:
+		from django.template import Context
+		from django.conf import settings
+		context = Context({'settings' : settings})
+
 	content_dic = {
 		'content' 			: markdown_content,
 		'unsubscribe_id' 	: unsubscribe_id
 	}
 
 	# Render text
-	text = render_to_string('core/mail/base_mail.txt', content_dic)
+	text = render_to_string('core/mail/base_mail.txt', content_dic, context)
 
 	# Convert markdown to html (mark_safe is needed to prevent the html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
-	html = render_to_string('core/mail/base_mail.html', content_dic)
+	html = render_to_string('core/mail/base_mail.html', content_dic, context)
 	# Inline css styles
 	html = premailer.transform(html)
 

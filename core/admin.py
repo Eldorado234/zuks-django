@@ -32,8 +32,10 @@ class NewsletterAdmin(admin.ModelAdmin):
         return render_to_response('core/newsletter_backend.html', {'form' : form}, context)
 
     def newsletter_template(self, request):
+        context = RequestContext(request)
+        
         content = request.POST['content'] if request.POST else ''
-        (_,html) = mail.renderContent(content, 'placeholder')
+        (_,html) = mail.renderContent(content, 'placeholder', context=context)
 
         return HttpResponse(html)
 
