@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.template import RequestContext
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.conf.urls import patterns, url
 from core import mail
 from core.models import Newsletter, NewsletterRecipient, ContactMail
 from core.forms import NewsletterForm
+from django.contrib import messages
 
 class NewsletterAdmin(admin.ModelAdmin):
     list_display = ('subject', 'content', 'send_date')
@@ -17,6 +18,15 @@ class NewsletterAdmin(admin.ModelAdmin):
             form = NewsletterForm(request.POST)
             if form.is_valid():
                 form.save()
+
+                # Add feedback for the user and return to the newsletter
+                # overview page
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    'Newsletter erfolgreich versendet'
+                )
+                return redirect('admin:core_newsletter_changelist')
         else:
             form = NewsletterForm()
         return render_to_response('core/newsletter_backend.html', {'form' : form}, context)
@@ -36,6 +46,7 @@ class NewsletterAdmin(admin.ModelAdmin):
                 name='newsletter-template'
             ),
         )
+        print urls
         return my_urls + urls
 
 class ContactMailAdmin(admin.ModelAdmin):
