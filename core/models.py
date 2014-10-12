@@ -63,4 +63,4 @@ class ContactMail(models.Model):
 			self.sendersubject,
 			self.content
 		)
-		send_mail(new_mail.subject, text, new_mail.sender, [new_mail.recipient])
+		send_mail(self.subject, text, self.sender, [self.recipient])
