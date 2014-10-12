@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Really Simple HTML Email Template</title>
+<link type="text/css" href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet' >
 <style>
 /* -------------------------------------
         GLOBAL
@@ -34,7 +35,7 @@ body {
         ELEMENTS
 ------------------------------------- */
 a {
-    color: #348eda;
+    color: #4d9eff;
 }
 
 .btn-primary {
@@ -136,23 +137,25 @@ table.footer-wrap a {
         TYPOGRAPHY
 ------------------------------------- */
 h1, h2, h3 {
-    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family:"Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     line-height: 1.1;
-    margin-bottom: 15px;
-    color: #000;
-    margin: 40px 0 10px;
+
+    color: #666;
+    margin: 10px 0 10px;
     line-height: 1.2;
-    font-weight: 200;
+    font-weight: normal;
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 21px;
+    color: #4d9eff;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-top: 15px;
 }
-h2 {
-    font-size: 28px;
-}
-h3 {
-    font-size: 22px;
+h2, h3 {
+    font-size: 15px;
+    font-weight: medium;
 }
 
 p, ul, ol {
@@ -205,7 +208,7 @@ ul li, ol li {
 ------------------------------------- */
 
 hr {
-  background-color:#4d9eff;
+  background-color: #4d9eff;
   height:1px;
   border:none;
 }
