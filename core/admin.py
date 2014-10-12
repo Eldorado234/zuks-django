@@ -33,7 +33,7 @@ class NewsletterAdmin(admin.ModelAdmin):
 
     def newsletter_template(self, request):
         context = RequestContext(request)
-        
+
         content = request.POST['content'] if request.POST else ''
         (_,html) = mail.renderContent(content, 'placeholder', context=context)
 
@@ -51,9 +51,12 @@ class NewsletterAdmin(admin.ModelAdmin):
         print urls
         return my_urls + urls
 
+class NewsletterRecipientAdmin(admin.ModelAdmin):
+    list_display = ('email', 'confirmed', 'register_date', 'confirm_date')
+
 class ContactMailAdmin(admin.ModelAdmin):
     list_display = ('name', 'sendersubject', 'sender', 'contact_date')
 
 admin.site.register(Newsletter, NewsletterAdmin)
-admin.site.register(NewsletterRecipient)
+admin.site.register(NewsletterRecipient, NewsletterRecipientAdmin)
 admin.site.register(ContactMail, ContactMailAdmin)
