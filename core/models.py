@@ -37,7 +37,8 @@ class Newsletter(models.Model):
 		super(Newsletter, self).save(*args, **kwargs)
 
 		# Send mails
-		mail.sendMail(self.sender, NewsletterRecipient.objects.all(), self.content, self.subject)
+		recipients = NewsletterRecipient.objects.filter(confirmed=True)
+		mail.sendMail(self.sender, recipients, self.content, self.subject)
 
 class ContactMail(models.Model):
 	recipient = "info@zuks.org"
