@@ -92,13 +92,6 @@ img.logo {
 }
 
 /* -------------------------------------
-        HEADER
-------------------------------------- */
-table.header-wrap {
-    width: 100%;
-}
-
-/* -------------------------------------
         BODY
 ------------------------------------- */
 table.body-wrap {
@@ -106,12 +99,9 @@ table.body-wrap {
     margin-top: -4px;
 }
 
-table.body-wrap .container {
-    border-left: 1px solid #f0f0f0;
-    border-right: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+.bodyContent {
+    padding-top: 20px;
 }
-
 
 /* -------------------------------------
         FOOTER
@@ -187,10 +177,6 @@ ul li, ol li {
     padding: 20px;
 }
 
-.header-wrap .container {
-    padding: 20px;
-}
-
 /* This should also be a block element, so that it will fill 100% of the .container */
 .content {
     max-width: 600px;
@@ -222,20 +208,20 @@ hr {
 <table class="body-wrap">
     <tr>
         <td></td>
-        <td class="container" bgcolor="#4d9eff">
-            <a href="{{ settings.BASE_URL }}">
-                <img class="logo" src="{{ settings.BASE_URL }}{% static 'img/logo/logo-weiss@300.png' %}">
-            </a>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
         <td class="container" bgcolor="#FFFFFF">
 
             <!-- content -->
             <div class="content">
             <table>
+                <tr>
+
+                    <td class="container" bgcolor="#4d9eff">
+                        <a href="{{ settings.BASE_URL }}">
+                            <img class="logo" src="{{ settings.BASE_URL }}{% static 'img/logo/logo-weiss@300.png' %}">
+                        </a>
+                    </td>
+
+                </tr>
                 <tr>
                     <td class="bodyContent">
                         {{ content }}
