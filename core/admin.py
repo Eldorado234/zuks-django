@@ -48,7 +48,7 @@ class NewsletterAdmin(admin.ModelAdmin):
                 name='newsletter-template'
             ),
         )
-        print urls
+        print(urls)
         return my_urls + urls
 
 class NewsletterRecipientAdmin(admin.ModelAdmin):
