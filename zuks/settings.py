@@ -73,4 +73,9 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-from local_settings import *
+try:
+    from local_settings import *
+except ImportError:
+    import sys
+    sys.stderr.write('Could not load the local configuration settings!\n')
+    sys.exit(1)
