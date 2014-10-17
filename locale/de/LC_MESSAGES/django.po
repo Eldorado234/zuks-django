@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-18 01:16+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/admin.py:27
+msgid "Newsletter successfully sent"
+msgstr "Newsletter erfolgreich versendet"
+
+#: core/models.py:13
+msgid "Newsletter Recipient"
+msgstr "Newsletter-Abonnent"
+
+#: core/models.py:14
+msgid "Newsletter Recipients"
+msgstr "Newsletter-Abonnenten"
+
+#: core/models.py:16 core/models.py:58
+msgid "Email-Address"
+msgstr "E-Mail-Adresse"
+
+#: core/models.py:17
+msgid "Confirmation identifier"
+msgstr "Bestätigungs-ID"
+
+#: core/models.py:17
+msgid ""
+"Id the recipient could use to confirm his Email-Address and unregister the "
+"newsletter"
+msgstr ""
+"ID, mit der der Empfänger seine E-Mail-Adresse bestätigen und den Newsletter "
+"abbestellen kann"
+
+#: core/models.py:18
+msgid "Registration date"
+msgstr "Registrierungs-Datum"
+
+#: core/models.py:19
+msgid "Confirmation status"
+msgstr "Bestätigungs-Status"
+
+#: core/models.py:20
+msgid "Confirmation date"
+msgstr "Bestätigungs-Datum"
+
+#: core/models.py:30
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: core/models.py:31
+msgid "Newsletters"
+msgstr "Newsletter"
+
+#: core/models.py:35
+msgid "Content"
+msgstr "Inhalt"
+
+#: core/models.py:36 core/models.py:60
+msgid "Subject"
+msgstr "Betreff"
+
+#: core/models.py:37
+msgid "Send date"
+msgstr "Sende-Datum"
+
+#: core/models.py:50
+msgid "Contact Mail"
+msgstr "Kontaktanfrage"
+
+#: core/models.py:51
+msgid "Contact Mails"
+msgstr "Kontaktanfragen"
+
+#: core/models.py:54
+msgid "ZUKS Contact request"
+msgstr "ZUKS Kontaktanfrage"
+
+#: core/models.py:55
+#, python-format
+msgid ""
+"Sender: %(sender)s\n"
+"Date: %(date)s\n"
+"Subject: %(subject)s\n"
+"\n"
+"%(content)s"
+msgstr ""
+"Sender: %(sender)s\n"
+"Datum: %(date)s\n"
+"Betreff: %(subject)s\n"
+"\n"
+"%(content)s"
+
+#: core/models.py:57
+msgid "Name"
+msgstr "Name"
+
+#: core/models.py:59
+msgid "Date"
+msgstr "Datum"
+
+#: core/models.py:61
+msgid "Text"
+msgstr "Anliegen"
+
+#: core/views.py:63
+msgid "Please enter a valid email address"
+msgstr "Bitte gib eine gültige E-Mail-Adresse an."
+
+#: core/views.py:70
+msgid "ZUKS Newsletter Registration"
+msgstr "ZUKS Newsletter Registrierung"
+
+#: core/views.py:76
+msgid "For this mail a newsletter is already requested."
+msgstr "Für diese E-Mail-Adresse wurde bereits ein Newsletter angefordert."
+
+#: core/views.py:79
+msgid ""
+"Unfortunately, the request could not be processed. Please try again later."
+msgstr ""
+"Die Anfrage konnte leider nicht bearbeitet werden. Bitte versuche es später "
+"erneut."

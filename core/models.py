@@ -4,17 +4,21 @@
 from django.db import models
 from datetime import datetime
 from django.core.mail import send_mail
+from django.utils.translation import ugettext_lazy as _
 from core import mail
 import uuid
 
 
 class NewsletterRecipient(models.Model):
+	class Meta:
+		verbose_name = _("Newsletter Recipient")
+		verbose_name_plural = _("Newsletter Recipients")
 
-	email = models.EmailField(unique=True, help_text="Die E-Mail-Adresse des Empfängers")
-	confirm_id = models.CharField(max_length=36, default=uuid.uuid4(), unique=True, help_text="Diese ID dient dazu die E-Mail-Adresse des Empfängers zu bestätigen.")
-	register_date = models.DateTimeField(auto_now_add=True, help_text="Das Datum, an dem sich der Empfänger für den Newsletter registriert hat")
-	confirmed = models.BooleanField(default=False, help_text="Gibt an, ob der Empfänger seine E-Mail-Adresse bereits bestätigt hat.")
-	confirm_date = models.DateTimeField(null=True, blank=True, help_text="Das Datum, an dem der seine E-Mail-Adresse bestätigt hat")
+	email = models.EmailField(unique=True, verbose_name=_("Email-Address"))
+	confirm_id = models.CharField(max_length=36, default=uuid.uuid4(), unique=True, verbose_name=_("Confirmation identifier"), help_text=_("Id the recipient could use to confirm his Email-Address and unregister the newsletter"))
+	register_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Registration date"))
+	confirmed = models.BooleanField(default=False, verbose_name=_("Confirmation status"))
+	confirm_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Confirmation date"))
 
 	def confirm(self):
 		self.confirmed = True
@@ -24,11 +28,15 @@ class NewsletterRecipient(models.Model):
 		return self.email;
 
 class Newsletter(models.Model):
+	class Meta:
+		verbose_name = _("Newsletter")
+		verbose_name_plural = _("Newsletters")
+
 	sender = "info@zuks.org"
 
-	content = models.TextField(help_text="Der Inhalt des Newsletters")
-	subject = models.CharField(max_length=100, help_text="Der Betreff des Newsletters")
-	send_date = models.DateTimeField(auto_now_add=True, help_text="Das Datum, an dem der Newsletter versand wurde")
+	content = models.TextField(verbose_name=_("Content"))
+	subject = models.CharField(max_length=100, verbose_name=_("Subject"))
+	send_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Send date"))
 
 	def __unicode__(self):
 		return self.subject
@@ -41,15 +49,19 @@ class Newsletter(models.Model):
 		mail.sendMail(self.sender, recipients, self.content, self.subject)
 
 class ContactMail(models.Model):
-	recipient = "info@zuks.org"
-	subject = "ZUKS Kontaktanfrage"
-	text_pattern = "Absender: {0}\nDatum: {1}\nBetreff: {2}\n\n{3}"
+	class Meta:
+		verbose_name = _("Contact Mail")
+		verbose_name_plural = _("Contact Mails")
 
-	name = models.CharField(max_length=100, verbose_name="Name")
-	sender = models.EmailField(max_length=128, verbose_name="Email-Adresse")
-	contact_date = models.DateTimeField(auto_now_add=True, verbose_name="Datum")
-	sendersubject = models.CharField(max_length=100, verbose_name="Betreff")
-	content = models.TextField(verbose_name="Anliegen")
+	recipient = "info@zuks.org"
+	subject = _("ZUKS Contact request")
+	text_pattern = _("Sender: %(sender)s\nDate: %(date)s\nSubject: %(subject)s\n\n%(content)s")
+
+	name = models.CharField(max_length=100, verbose_name=_("Name"))
+	sender = models.EmailField(max_length=128, verbose_name=_("Email-Address"))
+	contact_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Date"))
+	sendersubject = models.CharField(max_length=100, verbose_name=_("Subject"))
+	content = models.TextField(verbose_name=_("Text"))
 
 	def __unicode__(self):
 		return self.subject
@@ -58,10 +70,10 @@ class ContactMail(models.Model):
 		super(ContactMail, self).save(*args, **kwargs)
 
 		# Send mail
-		text = self.text_pattern.format(
-			self.sender,
-			str(self.contact_date),
-			self.sendersubject,
-			self.content
-		)
+		text = self.text_pattern % {
+			'sender' : self.sender,
+			'date' 	: str(self.contact_date),
+			'subject' : self.sendersubject,
+			'content' : self.content
+		}
 		send_mail(self.subject, text, self.sender, [self.recipient])
