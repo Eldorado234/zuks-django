@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from markdown import Markdown
+from django.utils.html import escape
 import premailer
 from django.core.mail import send_mail
 
@@ -63,7 +64,10 @@ def renderContent(markdown_content, unsubscribe_id=None, context=None):
 	# Render text
 	text = render_to_string('core/mail/base_mail.txt', content_dic, context)
 
-	# Convert markdown to html (mark_safe is needed to prevent the html to be escaped)
+	# Escape potential html in the markdown content
+	markdown_content = escape(markdown_content)
+	# Convert markdown to html
+	# (mark_safe is needed to prevent the converted html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
 	html = render_to_string('core/mail/base_mail.html', content_dic, context)
