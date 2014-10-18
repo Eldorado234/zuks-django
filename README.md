@@ -11,6 +11,7 @@ The official website of the ZUKS project. (www.zuks.org)
 - For Python <3.2 you also have to execute `pip install wsgiref==0.1.2`
 - Execute `python manage.py syncdb`
 - Execute `python manage.py collectstatic`
+- Execute `django-admin.py compilemessages`
 - Configure the webserver to deliver all files from the url `/static/*` from the `/static` folder _(optional when using the integrated web server `python manage.py runserver`)_
 - Install and configure [django-sentry](https://sentry.readthedocs.org/en/v1.13.5/install/index.html) to track application errors _(optional)_
 - Configure a hook that executes `python manage.py cleandb` periodically _(optional)_

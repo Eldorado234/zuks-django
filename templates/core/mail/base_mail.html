@@ -1,11 +1,12 @@
 {% load staticfiles %}
+{% load i18n %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Really Simple HTML Email Template</title>
+<title>{% trans "ZUKS Newsletter" %}</title>
 <link type="text/css" href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet' >
 <style>
 /* -------------------------------------
@@ -249,21 +250,21 @@ hr {
                     <tr>
                         <td align="center">
                             <p class="socials">
-                                <a href="https://www.facebook.com/zuks.org" title="ZUKS Facebook Seite">
-                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/facebook.png' %}" alt="ZUKS Facebook Seite">
+                                <a href="https://www.facebook.com/zuks.org" title="{% trans "ZUKS Facebook page" %}">
+                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/facebook.png' %}" alt="{% trans "ZUKS Facebook page" %}">
                                 </a>
-                                <a href="https://plus.google.com/+ZuksOrg" title="ZUKS Google+ Seite">
-                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/google+.png' %}" alt="ZUKS Google+ Seite">
+                                <a href="https://plus.google.com/+ZuksOrg" title="{% trans "ZUKS Google+ page" %}">
+                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/google+.png' %}" alt="{% trans "ZUKS Google+ page" %}">
                                 </a>
-                                <a href="https://twitter.com/zuksDE" title="ZUKS Twitter Seite">
-                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/twitter.png' %}" alt="ZUKS Twitter Seite">
+                                <a href="https://twitter.com/zuksDE" title="{% trans "ZUKS Twitter page" %}">
+                                <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/twitter.png' %}" alt="{% trans "ZUKS Twitter page" %}">
                                 </a>
                             </p>
                             <p>
-                                <a href="{{ settings.BASE_URL }}{% url 'impressum' %}">Impressum</a> |
-                                <a href="{{ settings.BASE_URL }}{% url 'impressum' %}#datenschutz">Datenschutz</a>
+                                <a href="{{ settings.BASE_URL }}{% url 'impressum' %}">{% trans "imprint" %}</a> |
+                                <a href="{{ settings.BASE_URL }}{% url 'impressum' %}#datenschutz">{% trans "privacy" %}</a>
                                 {% if unsubscribe_id %}
-                                    | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}"><unsubscribe>Abbestellen</unsubscribe></a>
+                                    | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}"><unsubscribe>{% trans "unsubscribe" %}</unsubscribe></a>
                                 {% endif %}
                             </p>
                         </td>

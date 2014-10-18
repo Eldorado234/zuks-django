@@ -1,4 +1,5 @@
 {% load widget_tweaks %}
+{% load i18n %}
 
 <form id="contactform" role="form" method="post" action="{% url "send_contactmail" %}">
     {% csrf_token %}
@@ -9,30 +10,42 @@
     <div class="form-group">
         <div class="row">
             <div class="col-lg-6">
-              {% render_field form.name class="form-control" placeholder="Name *" %}
+              {% trans "Name" as name_placeholder %}
+              {% with "placeholder:"|add:name_placeholder|add:" *" as name_placeholder %}
+                {{ form.name | add_class:"form-control" | attr:name_placeholder }}
+              {% endwith %}
               {{ form.name.errors }}
               <br class="gap-15" />
             </div>
             <div class="col-lg-6">
-              {% render_field form.sender class="form-control" placeholder="E-Mail Adresse *" %}
+              {% trans "Email address" as email_placeholder %}
+              {% with "placeholder:"|add:email_placeholder|add:" *" as email_placeholder %}
+                {{ form.sender | add_class:"form-control" | attr:email_placeholder }}
+              {% endwith %}
               {{ form.sender.errors }}
             </div>
         </div>
     </div>
     <div class="form-group">
-      {% render_field form.sendersubject class="form-control" placeholder="Betreff" %}
+      {% trans "Subject" as subject_placholder %}
+      {% with "placeholder:"|add:subject_placholder|add:" *" as subject_placholder %}
+        {{ form.sendersubject | add_class:"form-control" | attr:subject_placholder }}
+      {% endwith %}
       {{ form.sendersubject.errors }}
     </div>
     <div class="form-group">
-      {% render_field form.content class="form-control" placeholder="Dein Text *" rows="8" %}
+      {% trans "Your text" as text_placholder %}
+      {% with "placeholder:"|add:text_placholder|add:" *" as text_placholder %}
+        {{ form.content | add_class:"form-control" | attr:text_placholder | attr:"rows:8" }}
+      {% endwith %}
       {{ form.content.errors }}
     </div>
 
     {% if success %}
       <div class="success">
-          Deine Nachricht wurde erfolgreich gesendet. Wir werden dir so bald wie m&ouml;glich antworten.
+          {% trans "Your message was successfully sent. We will contact you soon." %}
       </div>
     {% endif %}
 
-    <input type="submit" name="submit" id="button-send" class="btn btn-block btn-success" value="Kontaktanfrage abschicken" />
+    <input type="submit" name="submit" id="button-send" class="btn btn-block btn-success" value="{% trans "Send" %}" />
 </form>

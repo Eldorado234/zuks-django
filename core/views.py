@@ -11,6 +11,7 @@ from core.models import NewsletterRecipient
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
+from django.utils.translation import ugettext as _
 import logging
 
 def index(request):
@@ -59,23 +60,23 @@ def subscribeToNewsletter(request):
 		try:
 			email = request.POST['email'] if 'email' in request.POST else ''
 
-			validator = EmailValidator(message='Bitte gib eine gültige E-Mail-Adresse an.')
+			validator = EmailValidator(message=_('Please enter a valid email address'))
 			validator(email)
 
 			recp = NewsletterRecipient(email=email)
 			recp.save()
 
 			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id})
-			mail.sendMail('info@zuks.org', [recp], text, 'ZUKS Newsletter Registrierung',  display_unsubscribe=False)
+			mail.sendMail('info@zuks.org', [recp], text, _('ZUKS Newsletter Registration'),  display_unsubscribe=False)
 
 			context_dic['success'] = True
 		except ValidationError as e:
 			context_dic['error'] = e.message
 		except IntegrityError:
-			context_dic['error'] = "Für diese E-Mail-Adresse wurde bereits ein Newsletter angefordert."
+			context_dic['error'] = _("For this mail a newsletter is already requested.")
 		except:
 			logging.exception("Newsletter subscribtion failed")
-			context_dic['error'] = "Die Anfrage konnte leider nicht bearbeitet werden. Versuche es später erneut."
+			context_dic['error'] = _("Unfortunately, the request could not be processed. Please try again later.")
 
 			try:
 				# Cleanup mail adress from database

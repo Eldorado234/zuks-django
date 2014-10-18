@@ -1,0 +1,315 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-18 15:02+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/admin.py:27
+msgid "Newsletter successfully sent"
+msgstr "Newsletter erfolgreich versendet"
+
+#: core/models.py:14
+msgid "Newsletter Recipient"
+msgstr "Newsletter-Abonnent"
+
+#: core/models.py:15
+msgid "Newsletter Recipients"
+msgstr "Newsletter-Abonnenten"
+
+#: core/models.py:17 core/models.py:61 templates/core/contact_form.html:21
+#: templates/core/subscribe_form.html:6
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: core/models.py:18
+msgid "Confirmation identifier"
+msgstr "Bestätigungs-ID"
+
+#: core/models.py:18
+msgid ""
+"Id the recipient could use to confirm his Email address and unregister the "
+"newsletter"
+msgstr ""
+"ID, mit der der Empfänger seine E-Mail-Adresse bestätigen und den Newsletter "
+"abbestellen kann"
+
+#: core/models.py:19
+msgid "Registration date"
+msgstr "Registrierungs-Datum"
+
+#: core/models.py:20
+msgid "Confirmation status"
+msgstr "Bestätigungs-Status"
+
+#: core/models.py:21
+msgid "Confirmation date"
+msgstr "Bestätigungs-Datum"
+
+#: core/models.py:32 templates/core/confirm.html:11
+#: templates/core/confirm.html.py:22 templates/core/newsletter_backend.html:12
+#: templates/core/newsletter_backend.html:23
+#: templates/core/unsubscribe.html:11 templates/core/unsubscribe.html.py:22
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: core/models.py:33
+msgid "Newsletters"
+msgstr "Newsletter"
+
+#: core/models.py:37
+msgid "Content"
+msgstr "Inhalt"
+
+#: core/models.py:38 core/models.py:63 templates/core/contact_form.html:30
+msgid "Subject"
+msgstr "Betreff"
+
+#: core/models.py:39
+msgid "Send date"
+msgstr "Sende-Datum"
+
+#: core/models.py:53
+msgid "Contact Mail"
+msgstr "Kontaktanfrage"
+
+#: core/models.py:54
+msgid "Contact Mails"
+msgstr "Kontaktanfragen"
+
+#: core/models.py:57
+msgid "ZUKS Contact request"
+msgstr "ZUKS Kontaktanfrage"
+
+#: core/models.py:58
+#, python-format
+msgid ""
+"Sender: %(sender)s\n"
+"Date: %(date)s\n"
+"Subject: %(subject)s\n"
+"\n"
+"%(content)s"
+msgstr ""
+"Sender: %(sender)s\n"
+"Datum: %(date)s\n"
+"Betreff: %(subject)s\n"
+"\n"
+"%(content)s"
+
+#: core/models.py:60 templates/core/contact_form.html:13
+msgid "Name"
+msgstr "Name"
+
+#: core/models.py:62
+msgid "Date"
+msgstr "Datum"
+
+#: core/models.py:64
+msgid "Text"
+msgstr "Anliegen"
+
+#: core/views.py:63
+msgid "Please enter a valid email address"
+msgstr "Bitte gib eine gültige E-Mail-Adresse an."
+
+#: core/views.py:70
+msgid "ZUKS Newsletter Registration"
+msgstr "ZUKS Newsletter Registrierung"
+
+#: core/views.py:76
+msgid "For this mail a newsletter is already requested."
+msgstr "Für diese E-Mail-Adresse wurde bereits ein Newsletter angefordert."
+
+#: core/views.py:79
+msgid ""
+"Unfortunately, the request could not be processed. Please try again later."
+msgstr ""
+"Die Anfrage konnte leider nicht bearbeitet werden. Bitte versuche es später "
+"erneut."
+
+#: templates/core/base.html:15 templates/core/mail/base_mail.txt:8
+msgid "Civilian Support in Civil Protection"
+msgstr "Zivile Unterstützung im Katastrophenschutz"
+
+#: templates/core/base.html:30
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+#: templates/core/confirm.html:6
+msgid "Newsletter registration"
+msgstr "Newsletter Registrierung"
+
+#: templates/core/confirm.html:10 templates/core/confirm.html.py:17
+#: templates/core/unsubscribe.html:10 templates/core/unsubscribe.html.py:17
+msgid "Back to ZUKS"
+msgstr "Zurück zu ZUKS"
+
+#: templates/core/confirm.html:31
+msgid "Link expired"
+msgstr "Link abgelaufen"
+
+#: templates/core/confirm.html:33
+msgid ""
+"\n"
+"                    Your confirmation link is expired.\n"
+"                    Heads up, subscribe again:\n"
+"                "
+msgstr ""
+"\n"
+"                    Dein Bestätigungs-Link ist leider abgelaufen.\n"
+"                    Kopf hoch, hier kannst du dich direkt wieder anmelden:\n"
+"                "
+
+#: templates/core/confirm.html:40
+msgid "Welcome at ZUKS"
+msgstr "Willkommen bei ZUKS"
+
+#: templates/core/confirm.html:41
+msgid "you successfully subscribed to our newsletter."
+msgstr "du hast dich erfolgreich für unseren Newsletter registriert."
+
+#: templates/core/confirm.html:43
+msgid ""
+"\n"
+"                    We will inform you, when there is something to report "
+"about\n"
+"                    the project, so you stay up to date with our progress.\n"
+"                "
+msgstr ""
+"\n"
+"                    Wir werden dich informieren, sobald es etwas über unser "
+"Projekt zu berichten gibt.\n"
+"                    So bleibst du immer auf dem Laufenden.\n"
+"                "
+
+#: templates/core/confirm.html:49
+msgid ""
+"\n"
+"                    We also post updates on our social media channels "
+"regularly.\n"
+"                    Check them out to get the latest news and discuss with\n"
+"                    other supporters.\n"
+"                "
+msgstr ""
+"\n"
+"Über unsere sozialen Kanäle erhälst Du regelmäßgUpdates rund um ZUKS und "
+"kannst Dich mit anderen Unterstützern austauschen."
+
+#: templates/core/contact_form.html:37
+msgid "Your text"
+msgstr "Deine Nachricht"
+
+#: templates/core/contact_form.html:46
+msgid "Your message was successfully sent. We will contact you soon."
+msgstr ""
+"Deine Nachricht wurde erfolgreich gesendet. Wir werden dir so bald wie "
+"möglich antworten."
+
+#: templates/core/contact_form.html:50
+#: templates/core/newsletter_backend.html:53
+msgid "Send"
+msgstr "Senden"
+
+#: templates/core/mail/base_mail.html:9
+msgid "ZUKS Newsletter"
+msgstr "ZUKS Newsletter"
+
+#: templates/core/mail/base_mail.html:253
+#: templates/core/mail/base_mail.html:254
+msgid "ZUKS Facebook page"
+msgstr "ZUKS Facebook Seite"
+
+#: templates/core/mail/base_mail.html:256
+#: templates/core/mail/base_mail.html:257
+msgid "ZUKS Google+ page"
+msgstr "ZUKS Google+ Seite"
+
+#: templates/core/mail/base_mail.html:259
+#: templates/core/mail/base_mail.html:260
+msgid "ZUKS Twitter page"
+msgstr "ZUKS Twitter Seite"
+
+#: templates/core/mail/base_mail.html:264
+msgid "imprint"
+msgstr "Impressum"
+
+#: templates/core/mail/base_mail.html:265
+msgid "privacy"
+msgstr "Datenschutz"
+
+#: templates/core/mail/base_mail.html:267 templates/core/mail/base_mail.txt:13
+msgid "unsubscribe"
+msgstr "abmelden"
+
+#: templates/core/mail/base_mail.txt:9
+msgid "Website"
+msgstr "Website"
+
+#: templates/core/mail/base_mail.txt:10
+msgid "Contact"
+msgstr "Kontakt"
+
+#: templates/core/newsletter_backend.html:7
+msgid "Admin Interface to send newsletters"
+msgstr "Admin Oberfläche um Newsletter zu versenden"
+
+#: templates/core/newsletter_backend.html:11
+#: templates/core/newsletter_backend.html:18
+msgid "Administration"
+msgstr "Administration"
+
+#: templates/core/newsletter_backend.html:35
+msgid "Editor"
+msgstr "Editor"
+
+#: templates/core/newsletter_backend.html:36
+msgid "Markdown help"
+msgstr "Markdown Hilfe"
+
+#: templates/core/newsletter_backend.html:57
+msgid "Preview"
+msgstr "Vorschau"
+
+#: templates/core/newsletter_backend.html:58
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: templates/core/stay_tuned.html:4
+msgid "Stay tuned"
+msgstr "Bleib dran"
+
+#: templates/core/subscribe_form.html:10
+msgid ""
+"\n"
+"                We sent you a Confirmation Mail.\n"
+"                Please also check your Spam folder, if you didn't\n"
+"                received a mail after a few minutes.\n"
+"            "
+msgstr ""
+"\n"
+"                Wir haben Dir eine Bestätigungsmail gesendet. \n"
+"                Schaue bitte auch in deinem Spam-Ordner nach, \n"
+"                wenn die Mail nicht ankommt.\n"
+"            "
+
+#: templates/core/subscribe_form.html:22
+msgid "Subscribe to newsletter"
+msgstr "Newsletter abonnieren"
+
+#: templates/core/unsubscribe.html:6
+msgid "Newsletter cancellation"
+msgstr "Newsletter abbestellen"
+
+#: templates/core/unsubscribe.html:30
+msgid "What a pity"
+msgstr "Wie schade"
+
+#: templates/core/unsubscribe.html:32
+msgid "We will miss you!"
+msgstr "Wir werden dich vermissen!"
+
+#: templates/core/unsubscribe.html:35
+msgid "Clicked accidentally? Directly subscribe again:"
+msgstr "Aus Versehen geklickt? Melde dich direkt wieder an:"

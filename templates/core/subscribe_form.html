@@ -1,12 +1,17 @@
+ {% load i18n %}
+ 
  <form id="newsletterform" role="form" method="post" action="{% url "subscribe" %}">
  	{% csrf_token %}
 
-    <input type="email" class="newsletter-field" placeholder="E-Mail-Adresse" name="email" />
+    <input type="email" class="newsletter-field" placeholder="{% trans "Email address" %}" name="email" />
 
     {% if success %}
 	    <div class="success">
-	        Wir haben Dir eine Best&auml;tigungsmail gesendet. 
-			Schaue bitte auch in deinem Spam-Ordner nach, wenn die Mail nicht ankommt.
+            {% blocktrans %}
+                We sent you a Confirmation Mail.
+                Please also check your Spam folder, if you didn't
+                received a mail after a few minutes.
+            {% endblocktrans %}
 	    </div>
     {% elif error %}
 	    <div class="error">
@@ -14,5 +19,5 @@
 	    </div>
 	{% endif %}
 
-    <button class="submit-newsletter">Newsletter abonnieren</button>
+    <button class="submit-newsletter">{% trans "Subscribe to newsletter" %}</button>
 </form>

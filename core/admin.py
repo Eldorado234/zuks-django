@@ -24,7 +24,7 @@ class NewsletterAdmin(admin.ModelAdmin):
                 messages.add_message(
                     request,
                     messages.SUCCESS,
-                    'Newsletter erfolgreich versendet'
+                    _('Newsletter successfully sent')
                 )
                 return redirect('admin:core_newsletter_changelist')
         else:
