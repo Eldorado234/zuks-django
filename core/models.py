@@ -14,8 +14,8 @@ class NewsletterRecipient(models.Model):
 		verbose_name = _("Newsletter Recipient")
 		verbose_name_plural = _("Newsletter Recipients")
 
-	email = models.EmailField(unique=True, verbose_name=_("Email-Address"))
-	confirm_id = models.CharField(max_length=36, default=uuid.uuid4(), unique=True, verbose_name=_("Confirmation identifier"), help_text=_("Id the recipient could use to confirm his Email-Address and unregister the newsletter"))
+	email = models.EmailField(unique=True, verbose_name=_("Email address"))
+	confirm_id = models.CharField(max_length=36, default=uuid.uuid4(), unique=True, verbose_name=_("Confirmation identifier"), help_text=_("Id the recipient could use to confirm his Email address and unregister the newsletter"))
 	register_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Registration date"))
 	confirmed = models.BooleanField(default=False, verbose_name=_("Confirmation status"))
 	confirm_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Confirmation date"))
@@ -58,7 +58,7 @@ class ContactMail(models.Model):
 	text_pattern = _("Sender: %(sender)s\nDate: %(date)s\nSubject: %(subject)s\n\n%(content)s")
 
 	name = models.CharField(max_length=100, verbose_name=_("Name"))
-	sender = models.EmailField(max_length=128, verbose_name=_("Email-Address"))
+	sender = models.EmailField(max_length=128, verbose_name=_("Email address"))
 	contact_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Date"))
 	sendersubject = models.CharField(max_length=100, verbose_name=_("Subject"))
 	content = models.TextField(verbose_name=_("Text"))

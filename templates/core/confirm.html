@@ -1,24 +1,25 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block "metadata" %}
-    <meta name="description" content="ZUKS Newsletter Anmeldung">
+    <meta name="description" content="{% trans "Newsletter registration" %}">
 {% endblock "metadata" %}
 
 {% block "menu" %}
-  <li><a href="{% url "index" %}" class="back">Zur&uuml;ck zu ZUKS</a></li>
-  <li class="active"><a href="#jump1">Newsletter</a></li>
+  <li><a href="{% url "index" %}" class="back">{% trans "Back to ZUKS" %}</a></li>
+  <li class="active"><a href="#jump1">{% trans "Newsletter" %}</a></li>
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
   <li>
     <a href="{% url "index" %}" data-toggle="collapse" data-target=".navbar-responsive-collapse" class="back">
-      Zur&uuml;ck zu ZUKS
+        {% trans "Back to ZUKS" %}
     </a>
   </li>
   <li class="active">
     <a href="#" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      Newsletter
+      {% trans "Newsletter" %}
     </a>
   </li>
 {% endblock "mobile_menu" %}
@@ -27,23 +28,29 @@
     <div class="section type-3">
       <div class="container">
           {% if status == 'expired' %}
-            <h2>Best&auml;tigungslink anfordern</h2>
+            <h2>{% trans "Link expired" %}</h2>
             <p>
-                Dein Best&auml;tigungslink ist leider abgelaufen.
-                Kopf hoch, hier kannst Du Dich erneut eintragen:
+                {% blocktrans %}
+                    Your confirmation link is expired.
+                    Heads up, subscribe again:
+                {% endblocktrans %}
                 {% include 'core/subscribe_form.html' %}
             </p>
           {% else %}
-            <h1>Willkommen bei ZUKS,</h1>
-            <h2>Du hast Dich erfolgreich für unseren Newsletter eingetragen.</h2>
+            <h1>{% trans "Welcome at ZUKS" %},</h1>
+            <h2>{% trans "you successfully subscribed to our newsletter." %}</h2>
             <p>
-              Wir werden Dich informieren, sobald es Neuigkeiten bei der Entwicklung
-              zu vermelden gibt und Dich so über den Projektstatus auf dem Laufenden halten.
+                {% blocktrans %}
+                    We will inform you, when there is something to report about
+                    the project, so you stay up to date with our progress.
+                {% endblocktrans %}
             </p>
             <p>
-              Über unsere sozialen Kan&auml;le erhälst Du regelm&auml;&szlig;ige
-              Updates rund um ZUKS und kannst Dich mit anderen Unterst&uuml;tzern
-              austauschen.
+                {% blocktrans %}
+                    We also post updates on our social media channels regularly.
+                    Check them out to get the latest news and discuss with
+                    other supporters.
+                {% endblocktrans %}
             </p>
           {% endif %}
 
