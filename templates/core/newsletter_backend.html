@@ -1,22 +1,27 @@
 {% extends "core/base.html" %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block "metadata" %}
-    <meta name="description" content="Admin Interface um Newsletter zu versenden">
+    <meta name="description" content="{% trans "Admin Interface to send newsletters" %}">
 {% endblock "metadata" %}
 
 {% block "menu" %}
-  <li><a href="{% url "admin:index" %}" class="back">Administration</a></li>
-  <li class="active"><a href="#mail">Newsletter</a></li>
+  <li><a href="{% url "admin:index" %}" class="back">{% trans "Administration" %}</a></li>
+  <li class="active"><a href="#mail">{% trans "Newsletter" %}</a></li>
 {% endblock "menu" %}
 
 {% block "mobile_menu" %}
   <li>
-      <a href="{% url "admin:index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">Administration</a>
+      <a href="{% url "admin:index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          {% trans "Administration" %}
+      </a>
   </li>
   <li class="active">
-      <a href="#mail" data-toggle="collapse" data-target=".navbar-responsive-collapse">Newsletter</a>
+      <a href="#mail" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          {% trans "Newsletter" %}
+      </a>
   </li>
 {% endblock "mobile_menu" %}
 
@@ -27,8 +32,8 @@
                 <div class="row">
                     <div class="col-lg-5" class="vertMargin">
                         <h2>
-                            Editor
-                            <a href="http://support.mashery.com/docs/read/customizing_your_portal/Markdown_Cheat_Sheet" class="btn btn-info btn-xs" target="_blank" >Markdown Hilfe</a>
+                            {% trans "Editor" %}
+                            <a href="http://support.mashery.com/docs/read/customizing_your_portal/Markdown_Cheat_Sheet" class="btn btn-info btn-xs" target="_blank" >{% trans "Markdown help" %}</a>
                         </h2>
                         <form action="{% url 'admin:core_newsletter_add' %}" id="newsletter_form" method="POST" accept-charset="utf-8" class="vertMargin">
                             {% csrf_token %}
@@ -36,21 +41,27 @@
                                 {{ hidden }}
                             {% endfor %}
                             <div class="form-group">
-                                {% render_field form.subject class="form-control" placeholder="Betreff" %}
+                                {% trans "Subject" as subject_placeholder %}
+                                {% with "placeholder:"|add:subject_placeholder|add:" *" as subject_placeholder %}
+                                    {{ form.subject | add_class:"form-control" | attr:subject_placeholder }}
+                                {% endwith %}
                                 {{ form.subject.errors }}
                             </div>
                             <div class="form-group">
-                                {% render_field form.content class="form-control" placeholder="Markdown Text" rows="20" cols="50" %}
+                                {% trans "Markdown Text" as subject_content %}
+                                {% with "placeholder:"|add:subject_content|add:" *" as subject_content %}
+                                    {{ form.content | add_class:"form-control" | attr:subject_content | attr:"rows:20" | attr:"cols:50" }}
+                                {% endwith %}
                                 {{ form.content.errors }}
                             </div>
 
                         </form>
-                        <div><button id="send" class="btn btn-primary btn-block">Senden</button></div>
+                        <div><button id="send" class="btn btn-primary btn-block">{% trans "Send" %}</button></div>
                     </div>
                     <div class="col-lg-7" >
                        <h2>
-                           Vorschau
-                           <button class="btn btn-primary btn-xs" id="update_preview">Aktualisieren</button>
+                           {% trans "Preview" %}
+                           <button class="btn btn-primary btn-xs" id="update_preview">{% trans "Update" %}</button>
                        </h2>
                        <div id="render" class="vertMargin"></div>
                     </div>

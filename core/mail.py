@@ -3,10 +3,12 @@ from django.utils.safestring import mark_safe
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from markdown import Markdown
+from django.utils.html import escape
 import premailer
 from django.core.mail import send_mail
 
-def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=True, context=None):
+def sendMail(sender, receivers, markdown_content, subject,
+			 display_unsubscribe=True, context=None, skip_errors=False):
 	"""
 		Sends a multipart to the receivers. Both, the raw text and the html,
 		are generated out of the markdown content.
@@ -22,8 +24,12 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
       		subject (string):			the subject of the mail.
       		display_unsubscribe (bool): True, if the unsubscribe link should be displayed,
       									False otherwise
+			skip_errors (bool):			If set, all errors are catched and the mail
+										is sent to the outstanding receivers. The last
+										exception is raised at the end.
 
 	"""
+	error = None
 
 	# Send mails to the receiver
 	for receiver in receivers:
@@ -31,7 +37,16 @@ def sendMail(sender, receivers, markdown_content, subject, display_unsubscribe=T
 		uid = receiver.confirm_id if display_unsubscribe else None
 		text, html = renderContent(markdown_content, uid, context)
 
-		send_mail(subject, text, sender, [receiver.email], html_message=html)
+		try:
+			send_mail(subject, text, sender, [receiver.email], html_message=html)
+		except Exception as e:
+			error = e
+			if not skip_errors:
+				raise error
+
+	if error:
+		raise error
+
 
 def renderContent(markdown_content, unsubscribe_id=None, context=None):
 	"""
@@ -63,7 +78,10 @@ def renderContent(markdown_content, unsubscribe_id=None, context=None):
 	# Render text
 	text = render_to_string('core/mail/base_mail.txt', content_dic, context)
 
-	# Convert markdown to html (mark_safe is needed to prevent the html to be escaped)
+	# Escape potential html in the markdown content
+	markdown_content = escape(markdown_content)
+	# Convert markdown to html
+	# (mark_safe is needed to prevent the converted html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
 	html = render_to_string('core/mail/base_mail.html', content_dic, context)

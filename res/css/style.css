@@ -866,7 +866,6 @@ html.no-touch .section.splash  {
 	padding: 10px;
 	text-align: center;
 	color: red;
-	display:none;
 }
 
 /************** custom **********/
@@ -1232,6 +1231,7 @@ ol.list > li {
 img.einsatzstruktur {
   max-width: 100%;
   margin-top: 25px;
+  border: 1px solid #ddd;
 }
 
 .ablauf {
