@@ -12,25 +12,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
-BASE_URL = 'http://www.zuks.org'
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SETTINGS_DIR = os.path.dirname(__file__)
 PROJECT_PATH = os.path.abspath(os.path.join(SETTINGS_DIR, os.pardir))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9e0b_87n@19e$rzbrnyn5jv-(q@a1ot^#^j4luaj(s)t5n0gj*'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -61,17 +45,6 @@ ROOT_URLCONF = 'zuks.urls'
 
 WSGI_APPLICATION = 'zuks.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -89,8 +62,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -100,3 +71,10 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+try:
+    from zuks.local_settings import *
+except ImportError as e:
+    import sys
+    sys.stderr.write('Could not load the local configuration settings (Reason: %s)!\n' % (str(e),))
+    sys.exit(1)
