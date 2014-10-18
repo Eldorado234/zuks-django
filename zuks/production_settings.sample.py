@@ -26,7 +26,8 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 """
 
 import os
-from zuks import BASE_DIR, PROJECT_PATH
+from zuks.settings import BASE_DIR
+from zuks.settings import PROJECT_PATH
 from zuks.settings import MIDDLEWARE_CLASSES
 
 # Used to create absolute URLs (needed for e-mails)

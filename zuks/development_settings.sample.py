@@ -23,7 +23,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 import os
-from zuks import BASE_DIR, PROJECT_PATH
+from zuks.settings import BASE_DIR
+from zuks.settings import PROJECT_PATH
 
 # Used to create absolute URLs (needed for e-mails)
 BASE_URL = 'http://yourhost.de'
