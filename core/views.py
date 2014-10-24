@@ -66,7 +66,7 @@ def subscribeToNewsletter(request):
 			recp = NewsletterRecipient(email=email)
 			recp.save()
 
-			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id})
+			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id}, context)
 			mail.sendMail('info@zuks.org', [recp], text, _('ZUKS Newsletter Registration'),  display_unsubscribe=False)
 
 			context_dic['success'] = True
