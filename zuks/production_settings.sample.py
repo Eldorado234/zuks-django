@@ -29,6 +29,7 @@ import os
 from zuks.settings import BASE_DIR
 from zuks.settings import PROJECT_PATH
 from zuks.settings import MIDDLEWARE_CLASSES
+from zuks.settings import INSTALLED_APPS
 
 # Used to create absolute URLs (needed for e-mails)
 BASE_URL = 'http://yourhost.de'
@@ -54,6 +55,54 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+SENTRY_KEY='<place your key here>'
+RAVEN_CONFIG = {
+            'dsn': '<place your dns here>',
+            }
+MIDDLEWARE_CLASSES += ('raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware',)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'ERROR',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -67,8 +116,8 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 SECRET_KEY = 'GENERATED KEY HERE'
 
 # The webserver has to be configured to always serve the website by https
+# Applies two the following two options:
 CSRF_COOKIE_SECURE = True
-
 SESSION_COOKIE_SECURE = True
 
 # Emails

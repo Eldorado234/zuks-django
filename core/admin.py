@@ -7,6 +7,7 @@ from core import mail
 from core.models import Newsletter, NewsletterRecipient, ContactMail
 from core.forms import NewsletterForm
 from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 class NewsletterAdmin(admin.ModelAdmin):
     list_display = ('subject', 'content', 'send_date')

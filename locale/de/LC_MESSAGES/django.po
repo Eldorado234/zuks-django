@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-18 15:02+0200\n"
+"POT-Creation-Date: 2014-10-24 20:50+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr "Newsletter-Abonnent"
 msgid "Newsletter Recipients"
 msgstr "Newsletter-Abonnenten"
 
-#: core/models.py:17 core/models.py:61 templates/core/contact_form.html:21
+#: core/models.py:17 core/models.py:69 templates/core/contact_form.html:21
 #: templates/core/subscribe_form.html:6
 msgid "Email address"
 msgstr "E-Mail-Adresse"
@@ -48,42 +48,43 @@ msgstr "Bestätigungs-Status"
 msgid "Confirmation date"
 msgstr "Bestätigungs-Datum"
 
-#: core/models.py:32 templates/core/confirm.html:11
+#: core/models.py:40 templates/core/confirm.html:11
 #: templates/core/confirm.html.py:22 templates/core/newsletter_backend.html:12
 #: templates/core/newsletter_backend.html:23
 #: templates/core/unsubscribe.html:11 templates/core/unsubscribe.html.py:22
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: core/models.py:33
+#: core/models.py:41
 msgid "Newsletters"
 msgstr "Newsletter"
 
-#: core/models.py:37
+#: core/models.py:45
 msgid "Content"
 msgstr "Inhalt"
 
-#: core/models.py:38 core/models.py:63 templates/core/contact_form.html:30
+#: core/models.py:46 core/models.py:71 templates/core/contact_form.html:30
+#: templates/core/newsletter_backend.html:44
 msgid "Subject"
 msgstr "Betreff"
 
-#: core/models.py:39
+#: core/models.py:47
 msgid "Send date"
 msgstr "Sende-Datum"
 
-#: core/models.py:53
+#: core/models.py:61
 msgid "Contact Mail"
 msgstr "Kontaktanfrage"
 
-#: core/models.py:54
+#: core/models.py:62
 msgid "Contact Mails"
 msgstr "Kontaktanfragen"
 
-#: core/models.py:57
+#: core/models.py:65
 msgid "ZUKS Contact request"
 msgstr "ZUKS Kontaktanfrage"
 
-#: core/models.py:58
+#: core/models.py:66
 #, python-format
 msgid ""
 "Sender: %(sender)s\n"
@@ -98,15 +99,15 @@ msgstr ""
 "\n"
 "%(content)s"
 
-#: core/models.py:60 templates/core/contact_form.html:13
+#: core/models.py:68 templates/core/contact_form.html:13
 msgid "Name"
 msgstr "Name"
 
-#: core/models.py:62
+#: core/models.py:70
 msgid "Date"
 msgstr "Datum"
 
-#: core/models.py:64
+#: core/models.py:72
 msgid "Text"
 msgstr "Anliegen"
 
@@ -208,7 +209,7 @@ msgstr ""
 "möglich antworten."
 
 #: templates/core/contact_form.html:50
-#: templates/core/newsletter_backend.html:53
+#: templates/core/newsletter_backend.html:59
 msgid "Send"
 msgstr "Senden"
 
@@ -251,6 +252,46 @@ msgstr "Website"
 msgid "Contact"
 msgstr "Kontakt"
 
+#: templates/core/mail/subscribe.md:3
+msgid "Thanks"
+msgstr "Vielen Dank"
+
+#: templates/core/mail/subscribe.md:4
+msgid ""
+"\n"
+"that you are interested in our project \"Civilian Support for Civil "
+"Protection\".\n"
+"You will receive news about ZUKS, so you could follow the progress of the "
+"project.\n"
+"Just open the following link, to confirm your Email address:\n"
+msgstr ""
+"\n"
+"dass Du Dich für unser Projekt \"Zivile Unterstützung im "
+"Katastrophenschutz\" interessierst.\n"
+"Du bekommst Neuigkeiten rund um ZUKS und über den aktuellen Entwicklungsstand "
+"des Projekts,\n"
+"wenn du die Eintragung zum Newsletter durch den Aufruf "
+"des folgenden Links bestätigst:\n"
+
+#: templates/core/mail/subscribe.md:12
+msgid ""
+"\n"
+"If you are not interested in the newsletter, just ignore this mail.\n"
+"You won't receive any further mails.\n"
+"\n"
+"Stay tuned,\n"
+"\n"
+"Your ZUKS Team\n"
+msgstr ""
+"\n"
+"Solltest Du doch nicht an unserem Newsletter interessiert sein, "
+"kannst Du diese E-Mail einfach löschen.\n"
+"Du wirst dann keine weiteren Mails von uns erhalten.\n"
+"\n"
+"Bleib dran,\n"
+"\n"
+"Dein ZUKS-Team\n"
+
 #: templates/core/newsletter_backend.html:7
 msgid "Admin Interface to send newsletters"
 msgstr "Admin Oberfläche um Newsletter zu versenden"
@@ -268,11 +309,15 @@ msgstr "Editor"
 msgid "Markdown help"
 msgstr "Markdown Hilfe"
 
-#: templates/core/newsletter_backend.html:57
+#: templates/core/newsletter_backend.html:51
+msgid "Markdown Text"
+msgstr "Markdown Text"
+
+#: templates/core/newsletter_backend.html:63
 msgid "Preview"
 msgstr "Vorschau"
 
-#: templates/core/newsletter_backend.html:58
+#: templates/core/newsletter_backend.html:64
 msgid "Update"
 msgstr "Aktualisieren"
 
