@@ -15,7 +15,7 @@ class NewsletterRecipient(models.Model):
 		verbose_name_plural = _("Newsletter Recipients")
 
 	email = models.EmailField(unique=True, verbose_name=_("Email address"))
-	confirm_id = models.CharField(max_length=36, unique=True, verbose_name=_("Confirmation identifier"), help_text=_("Id the recipient could use to confirm his Email address and unregister the newsletter"))
+	confirm_id = models.CharField(max_length=40, unique=True, verbose_name=_("Confirmation identifier"), help_text=_("Id the recipient could use to confirm his Email address and unregister the newsletter"))
 	register_date = models.DateTimeField(auto_now_add=True, verbose_name=_("Registration date"))
 	confirmed = models.BooleanField(default=False, verbose_name=_("Confirmation status"))
 	confirm_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Confirmation date"))
