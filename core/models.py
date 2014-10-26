@@ -25,7 +25,8 @@ class NewsletterRecipient(models.Model):
 		self.confirm_date = datetime.now()
 
 	def save(self, *args, **kwargs):
-		self.confirm_id = hashlib.sha1(self.email.encode('utf-8')).hexdigest()
+		src = (self.email + datetime.now().isoformat()).encode('utf-8')
+		self.confirm_id = hashlib.sha1(src).hexdigest()
 
 		super(NewsletterRecipient, self).save(*args, **kwargs)
 
