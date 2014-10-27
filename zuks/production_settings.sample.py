@@ -146,3 +146,10 @@ ADMINS = ()
 MANAGERS = ()
 
 MIDDLEWARE_CLASSES += ('django.middleware.common.BrokenLinkEmailsMiddleware',)
+
+# Tracking
+
+# The piwik base url. Example: 'https://analytics.yourhost.de/''
+# If None, no analytics code will be embedded
+PIWIK_URL = None
+PIWIK_SITE_ID = 1

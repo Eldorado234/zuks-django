@@ -153,20 +153,21 @@
                 </em>
             </p>
 
-            <h3>Datenschutzerkl&auml;rung f&uuml;r die Nutzung von Piwik</h3>
-            <p>
-                Unsere Website verwendet Piwik, dabei handelt es sich um einen sogenannten Webanalysedienst. Piwik verwendet sog. “Cookies”, das sind Textdateien, die auf Ihrem Computer gespeichert werden und die unsererseits eine Analyse der Benutzung der Webseite erm&ouml;glichen. Zu diesem Zweck werden die durch den Cookie erzeugten Nutzungsinformationen (einschlie&szlig;lich Ihrer gek&uuml;rzten IP-Adresse) an unseren Server &uuml;bertragen und zu Nutzungsanalysezwecken gespeichert, was der Webseitenoptimierung unsererseits dient. Ihre IP-Adresse wird bei diesem Vorgang umge­hend anony­mi­siert, so dass Sie als Nutzer f&uuml;r uns anonym bleiben. Die durch den Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Webseite werden nicht an Dritte weitergegeben. Sie k&ouml;nnen die Verwendung der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern, es kann jedoch sein, dass Sie in diesem Fall gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website voll umf&auml;nglich nutzen k&ouml;nnen.
-            </p>
-            <p>
-                Wenn Sie mit der Spei­che­rung und Aus­wer­tung die­ser Daten aus Ihrem Besuch nicht ein­ver­stan­den sind, dann k&ouml;n­nen Sie der Spei­che­rung und Nut­zung nachfolgend per Maus­klick jederzeit wider­spre­chen. In diesem Fall wird in Ihrem Browser ein sog. Opt-Out-Cookie abgelegt, was zur Folge hat, dass Piwik kei­ner­lei Sit­zungs­da­ten erhebt. Achtung: Wenn Sie Ihre Cookies l&ouml;schen, so hat dies zur Folge, dass auch das Opt-Out-Cookie gel&ouml;scht wird und ggf. von Ihnen erneut aktiviert werden muss.
-            </p>
-            <p>
-                <b>Widerspruch:
-            </b>
-            <p>
-
-                <iframe frameborder="no" height="400" src="http://analytics.zuks.org/index.php?module=CoreAdminHome&action=optOut"></iframe>
-            </p>
+            {% if settings.PIWIK_URL %}
+                <h3>Datenschutzerkl&auml;rung f&uuml;r die Nutzung von Piwik</h3>
+                <p>
+                    Unsere Website verwendet Piwik, dabei handelt es sich um einen sogenannten Webanalysedienst. Piwik verwendet sog. “Cookies”, das sind Textdateien, die auf Ihrem Computer gespeichert werden und die unsererseits eine Analyse der Benutzung der Webseite erm&ouml;glichen. Zu diesem Zweck werden die durch den Cookie erzeugten Nutzungsinformationen (einschlie&szlig;lich Ihrer gek&uuml;rzten IP-Adresse) an unseren Server &uuml;bertragen und zu Nutzungsanalysezwecken gespeichert, was der Webseitenoptimierung unsererseits dient. Ihre IP-Adresse wird bei diesem Vorgang umge­hend anony­mi­siert, so dass Sie als Nutzer f&uuml;r uns anonym bleiben. Die durch den Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Webseite werden nicht an Dritte weitergegeben. Sie k&ouml;nnen die Verwendung der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern, es kann jedoch sein, dass Sie in diesem Fall gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website voll umf&auml;nglich nutzen k&ouml;nnen.
+                </p>
+                <p>
+                    Wenn Sie mit der Spei­che­rung und Aus­wer­tung die­ser Daten aus Ihrem Besuch nicht ein­ver­stan­den sind, dann k&ouml;n­nen Sie der Spei­che­rung und Nut­zung nachfolgend per Maus­klick jederzeit wider­spre­chen. In diesem Fall wird in Ihrem Browser ein sog. Opt-Out-Cookie abgelegt, was zur Folge hat, dass Piwik kei­ner­lei Sit­zungs­da­ten erhebt. Achtung: Wenn Sie Ihre Cookies l&ouml;schen, so hat dies zur Folge, dass auch das Opt-Out-Cookie gel&ouml;scht wird und ggf. von Ihnen erneut aktiviert werden muss.
+                </p>
+                <p>
+                    <b>Widerspruch:
+                </b>
+                <p>
+                    <iframe frameborder="no" height="400" src="{{ settings.PIWIK_URL }}index.php?module=CoreAdminHome&action=optOut"></iframe>
+                </p>
+            {% endif %}
         </div>
     </div>
 {% endblock "content" %}
