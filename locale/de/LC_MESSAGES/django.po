@@ -195,7 +195,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"Über unsere sozialen Kanäle erhälst Du regelmäßgUpdates rund um ZUKS und "
+"Über unsere sozialen Kanäle erhälst Du regelmäßig Updates rund um ZUKS und "
 "kannst Dich mit anderen Unterstützern austauschen."
 
 #: templates/core/contact_form.html:37
