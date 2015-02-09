@@ -121,7 +121,7 @@ def update_faq(request):
 def faq(request):
 	context = RequestContext(request)
 	# Get all FAQ template files
-	content_files = glob.glob('templates/core/faq/*')
+	content_files = glob.glob('templates/core/faq/*.html')
 	# Remove 'templates' prefix
 	content_files = map(lambda x: x.split('/', 1)[1], content_files)
 	return render_to_response('core/faq.html', {'content' : content_files}, context)
