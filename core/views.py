@@ -117,10 +117,11 @@ def unsubscribeFromNewsletter(request, id):
 	return render_to_response('core/unsubscribe.html', {}, context)
 
 def update_faq(request):
-	# update subrepo
-	# 1abd97cca7939d9ef1b1b904f16959cc4b010073
+	# Update FAQ repository
 	faq_repo = git.cmd.Git('content/faq')
 	faq_repo.pull()
+
+	# Convert markdown to html files
 	source_files = glob.glob('content/faq/*.md')
 	md = Markdown()
 	count = 0
