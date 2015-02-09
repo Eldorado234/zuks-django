@@ -19,5 +19,5 @@ urlpatterns = patterns('',
 	url(r'^google2ba41cbba49d5958\.html/$', views.static, {'site' : 'google2ba41cbba49d5958.html'}, name='google_verification'),
 
 	url(r'^faq/$', views.faq, name='faq'),
-	url(r'^update-faq/$', views.update_faq, name='update_faq'),
+	url(r'^faq/update$', views.update_faq, name='update_faq'),
 )
