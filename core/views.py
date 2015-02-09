@@ -14,6 +14,8 @@ from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import logging
 import glob
+from markdown import Markdown
+from django.http import HttpResponse
 
 def index(request):
 	form = ContactForm()
@@ -115,8 +117,16 @@ def unsubscribeFromNewsletter(request, id):
 
 def update_faq(request):
 	# update subrepo
-	# convert markdown
-	pass
+	source_files = glob.glob('content/faq/*.md')
+	md = Markdown()
+	count = 0
+	for source_path in source_files:
+		target_path = 'templates/core/faq/%d.html' % (count,)
+		with open(source_path, 'r') as source, open(target_path, 'w') as target:
+			html = md.convert(source.read())
+			target.write(html)
+		count += 1
+	return HttpResponse('')
 
 def faq(request):
 	context = RequestContext(request)
