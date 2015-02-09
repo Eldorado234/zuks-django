@@ -125,7 +125,7 @@ def update_faq(request):
 	md = Markdown()
 	count = 0
 	for source_path in source_files:
-		target_path = 'templates/core/faq/%d.html' % (count,)
+		target_path = 'templates/core/faq/%04d.html' % (count,)
 		with open(source_path, 'r') as source, open(target_path, 'w') as target:
 			html = md.convert(source.read())
 			target.write(html)
