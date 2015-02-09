@@ -16,6 +16,7 @@ import logging
 import glob
 from markdown import Markdown
 from django.http import HttpResponse
+import git
 
 def index(request):
 	form = ContactForm()
@@ -117,6 +118,9 @@ def unsubscribeFromNewsletter(request, id):
 
 def update_faq(request):
 	# update subrepo
+	# 1abd97cca7939d9ef1b1b904f16959cc4b010073
+	faq_repo = git.cmd.Git('content/faq')
+	faq_repo.pull()
 	source_files = glob.glob('content/faq/*.md')
 	md = Markdown()
 	count = 0
