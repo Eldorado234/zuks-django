@@ -13,6 +13,7 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import logging
+import glob
 
 def index(request):
 	form = ContactForm()
@@ -111,3 +112,16 @@ def unsubscribeFromNewsletter(request, id):
 		pass
 
 	return render_to_response('core/unsubscribe.html', {}, context)
+
+def update_faq(request):
+	# update subrepo
+	# convert markdown
+	pass
+
+def faq(request):
+	context = RequestContext(request)
+	# Get all FAQ template files
+	content_files = glob.glob('templates/core/faq/*')
+	# Remove 'templates' prefix
+	content_files = map(lambda x: x.split('/', 1)[1], content_files)
+	return render_to_response('core/faq.html', {'content' : content_files}, context)

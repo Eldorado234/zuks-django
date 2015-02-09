@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+
+{% block "metadata" %}
+    <meta name="description" content="FAQ">
+    <meta name="keywords" content="FAQ Fragen Antworten Konzept">
+{% endblock "metadata" %}
+
+{% block "menu" %}
+  <li><a href="{% url "index" %}" class="back">ZUKS</a></li>
+  <li class="active"><a href="#faq">FAQ</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="{% url "index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#faq" data-toggle="collapse" data-target=".navbar-responsive-collapse">FAQ</a>
+  </li>
+{% endblock "mobile_menu" %}
+
+{% block "content" %}
+    <div class="section type-2 faq" id="faq">
+        <div class="container">
+            <h1>Fragen und Antworten</h1>
+
+            {% for content_file in content %}
+              {% include content_file %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock "content" %}
