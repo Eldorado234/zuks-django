@@ -3,9 +3,11 @@
 
 from django.db import models
 from datetime import datetime
+from django.conf import settings
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from core import mail
+import pytz
 import hashlib
 
 
@@ -22,7 +24,8 @@ class NewsletterRecipient(models.Model):
 
 	def confirm(self):
 		self.confirmed = True
-		self.confirm_date = datetime.now()
+		# as we work with the local times, we have to set it with the correct timezone.
+		self.confirm_date = datetime.now().replace(tzinfo=pytz.timezone(settings.TIME_ZONE)) if settings.USE_TZ else datetime.now()
 
 	def save(self, *args, **kwargs):
 		src = (self.email + datetime.now().isoformat()).encode('utf-8')
