@@ -25,18 +25,18 @@
               {{ form.author.errors }}
             </div>
             <div class="col-lg-4">
-              {% trans "Email address" as email_placeholder %}
-              {% with "placeholder:"|add:email_placeholder as email_placeholder %}
-                {{ form.email | add_class:"form-control" | attr:email_placeholder }}
-              {% endwith %}
-              {{ form.email.errors }}
-            </div>
-            <div class="col-lg-4">
               {% trans "Twitter name" as twitter_placeholder %}
               {% with "placeholder:"|add:twitter_placeholder as twitter_placeholder %}
                 {{ form.twitter_handle | add_class:"form-control" | attr:twitter_placeholder }}
               {% endwith %}
               {{ form.twitter_handle.errors }}
+            </div>
+            <div class="col-lg-4">
+              {% trans "Email address" as email_placeholder %}
+              {% with "placeholder:"|add:email_placeholder as email_placeholder %}
+                {{ form.email | add_class:"form-control" | attr:email_placeholder }}
+              {% endwith %}
+              {{ form.email.errors }}
             </div>
         </div>
     </div>
