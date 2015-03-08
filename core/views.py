@@ -121,16 +121,37 @@ def update_faq(request):
 	faq_repo = git.cmd.Git('content/faq')
 	faq_repo.pull()
 
-	# Convert markdown to html files
+	# Reset consistency status of all FAQ questions.
+	# If no question exists for an question entry, the question will 
+	# remain inconsistent and is not shown in the FAQ. 
+	# It could be aded later again, the author information will remain.
+	for question in FAQ.objects.all():
+		question.consistent = False
+	
 	source_files = glob.glob('content/faq/*.md')
 	md = Markdown()
-	count = 0
 	for source_path in source_files:
-		target_path = 'templates/core/faq/%04d.html' % (count,)
+		file_name = os.path.basename(source_path)
+
+		# Check for database consistency
+		try:
+			question = FAQ.objects.get(file_name=file_name)
+			question.consistent = True
+		except FAQ.DoesNotExist:
+			# Question was added directly in the repository
+			# Assume, that this question was authored by ZUKS
+			FAQ.objects.create(	file_name=file_name,
+								author=_("ZUKS"),
+								email=_("@zuks-mail"),
+								twitter_handle=_("@zuks-twitter"),
+								consistent=True)
+
+		# Convert markdown to html files
+		target_path = 'templates/core/faq/%s.html' % (file_name,)
 		with open(source_path, 'r') as source, open(target_path, 'w') as target:
 			html = md.convert(source.read())
 			target.write(html)
-		count += 1
+
 	return HttpResponse('')
 
 def faq(request):
