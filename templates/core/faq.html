@@ -26,7 +26,7 @@
             <h1>Fragen und Antworten</h1>
 
             {% for question in questions %}
-              {% with question_path|add:question.file_name|add:'.html' as template %}
+              {% with question_path|add:question.slug|add:'.html' as template %}
                 {% include template %}
               {% endwith %}
             {% endfor %}

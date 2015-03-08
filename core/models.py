@@ -6,6 +6,7 @@ from datetime import datetime
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from core import mail
+from django.utils.text import slugify
 import hashlib
 
 
@@ -87,14 +88,24 @@ class ContactMail(models.Model):
 
 class FAQ(models.Model):
 	class Meta:
-		verbose_name = _("FAQ")
-		verbose_name_plural = _("FAQs")
+		verbose_name = _("FAQ Question")
+		verbose_name_plural = _("FAQ Questions")
 
-	file_name = models.CharField(max_length=100, verbose_name=_("File name"))
-	author = models.CharField(max_length=100, verbose_name=_("Author"))
-	email = models.EmailField(max_length=100, verbose_name=_("Email address"))
-	twitter_handle = models.CharField(max_length=100, verbose_name=_("Twitter name"))
+	slug = models.CharField(max_length=100, verbose_name=_("Slug"), unique=True)
+	text = models.CharField(max_length=100, verbose_name=_("Text"), unique=True)
+	author = models.CharField(max_length=100, verbose_name=_("Author"), blank=True, null=True)
+	email = models.EmailField(max_length=100, verbose_name=_("Email address"), blank=True, null=True)
+	twitter_handle = models.CharField(max_length=100, verbose_name=_("Twitter name"), blank=True, null=True)
 	consistent = models.BooleanField(default=False, verbose_name=_("FAQ consistency"))
 
+	def save(self, *args, **kwargs):
+		if self.twitter_handle and self.twitter_handle[0] != '@':
+			self.twitter_handle = '@%s' % (self.twitter_handle,)
+
+		if not self.slug:
+			self.slug = slugify(self.text)
+			
+		super(FAQ, self).save(*args, **kwargs)
+
 	def __unicode__(self):
-		return self.file_name
+		return self.text
