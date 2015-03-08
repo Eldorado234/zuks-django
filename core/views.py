@@ -7,13 +7,13 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from core.forms import ContactForm
 from core import mail
-from core.models import NewsletterRecipient
+from core.models import NewsletterRecipient, FAQ
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import logging
-import glob
+import glob, os
 from markdown import Markdown
 from django.http import HttpResponse
 import git
@@ -156,8 +156,6 @@ def update_faq(request):
 
 def faq(request):
 	context = RequestContext(request)
-	# Get all FAQ template files
-	content_files = glob.glob('templates/core/faq/*.html')
-	# Remove 'templates' prefix
-	content_files = map(lambda x: x.split('/', 1)[1], content_files)
-	return render_to_response('core/faq.html', {'content' : content_files}, context)
+	questions = FAQ.objects.filter(consistent=True)
+	params = {'questions' : questions, 'question_path': 'core/faq/'}
+	return render_to_response('core/faq.html', params, context)
