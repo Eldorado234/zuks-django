@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from core.forms import ContactForm
+from core.forms import ContactForm, FAQForm
 from core import mail
 from core.models import NewsletterRecipient, FAQ
 from django.core.validators import EmailValidator
@@ -13,10 +13,8 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import logging
-import glob, os
-from markdown import Markdown
 from django.http import HttpResponse
-import git
+from core.faq_management import FAQManagement
 
 def index(request):
 	form = ContactForm()
@@ -117,45 +115,35 @@ def unsubscribeFromNewsletter(request, id):
 	return render_to_response('core/unsubscribe.html', {}, context)
 
 def update_faq(request):
-	# Update FAQ repository
-	faq_repo = git.cmd.Git('content/faq')
-	faq_repo.pull()
-
-	# Reset consistency status of all FAQ questions.
-	# If no question exists for an question entry, the question will 
-	# remain inconsistent and is not shown in the FAQ. 
-	# It could be aded later again, the author information will remain.
-	for question in FAQ.objects.all():
-		question.consistent = False
-	
-	source_files = glob.glob('content/faq/*.md')
-	md = Markdown()
-	for source_path in source_files:
-		file_name = os.path.basename(source_path)
-
-		# Check for database consistency
-		try:
-			question = FAQ.objects.get(file_name=file_name)
-			question.consistent = True
-		except FAQ.DoesNotExist:
-			# Question was added directly in the repository
-			# Assume, that this question was authored by ZUKS
-			FAQ.objects.create(	file_name=file_name,
-								author=_("ZUKS"),
-								email=_("@zuks-mail"),
-								twitter_handle=_("@zuks-twitter"),
-								consistent=True)
-
-		# Convert markdown to html files
-		target_path = 'templates/core/faq/%s.html' % (file_name,)
-		with open(source_path, 'r') as source, open(target_path, 'w') as target:
-			html = md.convert(source.read())
-			target.write(html)
-
+	FAQManagement.update_faq()
+    # TODO: Generate an adequate response
 	return HttpResponse('')
 
 def faq(request):
 	context = RequestContext(request)
 	questions = FAQ.objects.filter(consistent=True)
-	params = {'questions' : questions, 'question_path': 'core/faq/'}
+	params = {'questions' : questions, 'question_path': 'core/faq/', 'form': FAQForm()}
 	return render_to_response('core/faq.html', params, context)
+
+def submit_faq_question(request):
+	'''
+	Called via ajax.
+	'''
+	context = RequestContext(request)
+	status = False
+
+	if request.method == 'POST':
+		form = FAQForm(request.POST)
+		if form.is_valid():
+			faq_question = form.save()
+			status = True
+
+			# TODO: execute async
+			FAQManagement.push_question(faq_question)
+	else:
+		form = FAQForm()
+
+	return render_to_response('core/faq_form.html', {
+			'form': form,
+			'success': status
+		}, context)

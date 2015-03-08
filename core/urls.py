@@ -20,4 +20,6 @@ urlpatterns = patterns('',
 
 	url(r'^faq/$', views.faq, name='faq'),
 	url(r'^faq/update$', views.update_faq, name='update_faq'),
+	url(r'^faq/submit$', views.submit_faq_question, name='faq_submit'),
+	
 )
