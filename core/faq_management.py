@@ -4,6 +4,7 @@ from core.models import FAQ
 import glob, os
 from markdown import Markdown
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 # TODO: Handle git errors
 class FAQManagement:
@@ -34,7 +35,7 @@ class FAQManagement:
 			except FAQ.DoesNotExist:
 				# Question was added directly in the repository
 				# Assume, that this question was authored by ZUKS
-				FAQ.objects.create( question=file_name,
+				FAQ.objects.create( text=file_name,
 									slug=file_name,
 									author=_("ZUKS"),
 									email=_("@zuks-mail"),
