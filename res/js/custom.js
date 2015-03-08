@@ -16,11 +16,13 @@ $(function () {
       activate(navbarItem);
     });
 
-    $('#contactform').ajaxForm(function(returnVal) {
-        $('#contactform').html($(returnVal).html());
-    });
+    function ajaxifyForm(selector) {
+      $(selector).ajaxForm(function(returnVal) {
+        $(selector).html($(returnVal).html());
+      });
+    }
 
-    $('#newsletterform').ajaxForm(function(returnVal) {
-        $('#newsletterform').html($(returnVal).html());
-    });
+    ajaxifyForm('#contactform');
+    ajaxifyForm('#newsletterform');
+    ajaxifyForm('#faqform');
 });

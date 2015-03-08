@@ -404,8 +404,8 @@ label {
   color: #fff;
 }
 .section.type-1 h4 {
-  color: #a5b3bf;
-  border-color: #313b44;
+  color: #fefefe;
+  border-color: #fefefe;
 }
 .section.type-1 hr {
   border-color: #313b44;
@@ -962,6 +962,10 @@ img.content-icon-160 {
   margin-top: 60px;
 }
 
+#question img.content-icon-160 {
+  margin-top: 0;
+}
+
 .section.type-2 {
   padding-top: 30px;
 }
@@ -1158,25 +1162,20 @@ h4.headline {
   background-color: #f0f2f4;
 }
 
-.section-contact .error,
-.section-contact .success {
+form .error,
+form .success {
   margin-bottom: 13px;
   border-radius: 3px;
   color: #efefef;
   font-weight: normal;
 }
 
-.section-contact .error {
+form .error {
   background-color: #d03556;
 }
 
-.section-contact .success {
+form .success {
   background-color: #00cf72;
-}
-
-.section-contact h4.headline {
-  color: #fefefe;
-  border-color: #fefefe;
 }
 
 .section-contact h2 {
