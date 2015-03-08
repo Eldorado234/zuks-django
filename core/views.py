@@ -15,6 +15,7 @@ from django.utils.translation import ugettext as _
 import logging
 from django.http import HttpResponse
 from core.faq_management import FAQManagement
+from threading import Thread
 
 def index(request):
 	form = ContactForm()
@@ -138,8 +139,8 @@ def submit_faq_question(request):
 			faq_question = form.save()
 			status = True
 
-			# TODO: execute async
-			FAQManagement.push_question(faq_question)
+			# Push question
+			Thread(target=FAQManagement.push_question, args=(faq_question,)).start()
 	else:
 		form = FAQForm()
 
