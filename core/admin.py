@@ -57,7 +57,10 @@ class NewsletterRecipientAdmin(admin.ModelAdmin):
 class ContactMailAdmin(admin.ModelAdmin):
     list_display = ('name', 'sendersubject', 'sender', 'contact_date')
 
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('text', 'author', 'consistent')
+
 admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(NewsletterRecipient, NewsletterRecipientAdmin)
 admin.site.register(ContactMail, ContactMailAdmin)
-admin.site.register(FAQ)
+admin.site.register(FAQ, FAQAdmin)
