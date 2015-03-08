@@ -84,3 +84,17 @@ class ContactMail(models.Model):
 			'content' : self.content
 		}
 		send_mail(self.subject, text, self.sender, [self.recipient])
+
+class FAQ(models.Model):
+	class Meta:
+		verbose_name = _("FAQ")
+		verbose_name_plural = _("FAQs")
+
+	file_name = models.CharField(max_length=100, verbose_name=_("File name"))
+	author = models.CharField(max_length=100, verbose_name=_("Author"))
+	email = models.EmailField(max_length=100, verbose_name=_("Email address"))
+	twitter_handle = models.CharField(max_length=100, verbose_name=_("Twitter name"))
+	consistent = models.BooleanField(default=False, verbose_name=_("FAQ consistency"))
+
+	def __unicode__(self):
+		return self.file_name

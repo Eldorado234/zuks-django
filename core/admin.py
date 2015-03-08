@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.conf.urls import patterns, url
 from core import mail
-from core.models import Newsletter, NewsletterRecipient, ContactMail
+from core.models import Newsletter, NewsletterRecipient, ContactMail, FAQ
 from core.forms import NewsletterForm
 from django.contrib import messages
 from django.utils.translation import ugettext as _
@@ -60,3 +60,4 @@ class ContactMailAdmin(admin.ModelAdmin):
 admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(NewsletterRecipient, NewsletterRecipientAdmin)
 admin.site.register(ContactMail, ContactMailAdmin)
+admin.site.register(FAQ)
