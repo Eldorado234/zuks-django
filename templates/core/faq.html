@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block "metadata" %}
+    <meta name="description" content="FAQ">
+    <meta name="keywords" content="FAQ Fragen Antworten Konzept">
+{% endblock "metadata" %}
+
+{% block "menu" %}
+  <li><a href="{% url "index" %}" class="back">ZUKS</a></li>
+  <li class="active"><a href="#faq">FAQ</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="{% url "index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#faq" data-toggle="collapse" data-target=".navbar-responsive-collapse">FAQ</a>
+  </li>
+{% endblock "mobile_menu" %}
+
+{% block "content" %}
+    <div class="section type-2 faq" id="faq">
+        <div class="container">
+            <h1>Fragen und Antworten</h1>
+
+            {% for question in questions %}
+              {% with question_path|add:question.slug|add:'.html' as template %}
+                {% include template %}
+              {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section type-1 question" id="question">
+      <div class="container">
+        <h4 class="headline">{% trans "Ask ZUKS" %}</h4>
+        <h2>{% trans "Any questions left? Please tell us!" %}</h2>
+        <div class="row">
+          <div class="col-lg-7">
+              {% include 'core/faq_form.html' %}
+          </div>
+          <div class="col-lg-5">
+              <img src="{% static "img/logo/logo-bild-weiss@320.png" %}" alt="ZUKS Logo Bildmarke" class="content-icon-160" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% include "core/footer.html" %}
+
+{% endblock "content" %}

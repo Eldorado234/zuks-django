@@ -5,14 +5,17 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from core.forms import ContactForm
+from core.forms import ContactForm, FAQForm
 from core import mail
-from core.models import NewsletterRecipient
+from core.models import NewsletterRecipient, FAQ
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import logging
+from django.http import HttpResponse
+from core.faq_management import FAQManagement
+from threading import Thread
 
 def index(request):
 	form = ContactForm()
@@ -111,3 +114,37 @@ def unsubscribeFromNewsletter(request, id):
 		pass
 
 	return render_to_response('core/unsubscribe.html', {}, context)
+
+def update_faq(request):
+	FAQManagement.update_faq()
+    # TODO: Generate an adequate response
+	return HttpResponse('')
+
+def faq(request):
+	context = RequestContext(request)
+	questions = FAQ.objects.filter(consistent=True)
+	params = {'questions' : questions, 'question_path': 'core/faq/', 'form': FAQForm()}
+	return render_to_response('core/faq.html', params, context)
+
+def submit_faq_question(request):
+	'''
+	Called via ajax.
+	'''
+	context = RequestContext(request)
+	status = False
+
+	if request.method == 'POST':
+		form = FAQForm(request.POST)
+		if form.is_valid():
+			faq_question = form.save()
+			status = True
+
+			# Push question
+			Thread(target=FAQManagement.push_question, args=(faq_question,)).start()
+	else:
+		form = FAQForm()
+
+	return render_to_response('core/faq_form.html', {
+			'form': form,
+			'success': status
+		}, context)

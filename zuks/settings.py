@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'core',
     'widget_tweaks',
+    'ordered_model',
 )
 
 MIDDLEWARE_CLASSES = (

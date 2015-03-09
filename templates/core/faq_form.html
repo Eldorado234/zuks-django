@@ -1,0 +1,51 @@
+{% load widget_tweaks %}
+{% load i18n %}
+
+<form id="faqform" role="form" method="post" action="{% url "faq_submit" %}">
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    <div class="form-group">
+      {% trans "Your question" as text_placholder %}
+      {% with "placeholder:"|add:text_placholder|add:" *" as text_placholder %}
+        {{ form.text | add_class:"form-control" | attr:text_placholder }}
+      {% endwith %}
+      {{ form.text.errors }}
+    </div>
+    
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-4">
+              {% trans "Name (Pseudonym)" as author_placholder %}
+              {% with "placeholder:"|add:author_placholder as author_placholder %}
+                {{ form.author | add_class:"form-control" | attr:author_placholder }}
+              {% endwith %}
+              {{ form.author.errors }}
+            </div>
+            <div class="col-lg-4">
+              {% trans "Twitter name" as twitter_placeholder %}
+              {% with "placeholder:"|add:twitter_placeholder as twitter_placeholder %}
+                {{ form.twitter_handle | add_class:"form-control" | attr:twitter_placeholder }}
+              {% endwith %}
+              {{ form.twitter_handle.errors }}
+            </div>
+            <div class="col-lg-4">
+              {% trans "Email address" as email_placeholder %}
+              {% with "placeholder:"|add:email_placeholder as email_placeholder %}
+                {{ form.email | add_class:"form-control" | attr:email_placeholder }}
+              {% endwith %}
+              {{ form.email.errors }}
+            </div>
+        </div>
+    </div>
+    
+    {% if success %}
+      <div class="success">
+          {% trans "Your question was successfully saved. We will check it soon and integrate it into this FAQ section." %}
+      </div>
+    {% endif %}
+
+    <input type="submit" name="submit" id="button-send" class="btn btn-block btn-success" value="{% trans "Send" %}" />
+</form>

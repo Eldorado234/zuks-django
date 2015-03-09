@@ -4,10 +4,11 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.conf.urls import patterns, url
 from core import mail
-from core.models import Newsletter, NewsletterRecipient, ContactMail
+from core.models import Newsletter, NewsletterRecipient, ContactMail, FAQ
 from core.forms import NewsletterForm
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from ordered_model.admin import OrderedModelAdmin
 
 class NewsletterAdmin(admin.ModelAdmin):
     list_display = ('subject', 'content', 'send_date')
@@ -57,6 +58,10 @@ class NewsletterRecipientAdmin(admin.ModelAdmin):
 class ContactMailAdmin(admin.ModelAdmin):
     list_display = ('name', 'sendersubject', 'sender', 'contact_date')
 
+class FAQAdmin(OrderedModelAdmin):
+    list_display = ('text', 'author', 'consistent', 'move_up_down_links')
+
 admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(NewsletterRecipient, NewsletterRecipientAdmin)
 admin.site.register(ContactMail, ContactMailAdmin)
+admin.site.register(FAQ, FAQAdmin)

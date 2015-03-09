@@ -153,3 +153,16 @@ MIDDLEWARE_CLASSES += ('django.middleware.common.BrokenLinkEmailsMiddleware',)
 # If None, no analytics code will be embedded
 PIWIK_URL = None
 PIWIK_SITE_ID = 1
+
+# GitHub (used for FAQ management)
+
+# Generate key for your account here: https://github.com/settings/applications
+GITHUB_TOKEN = 'GENERATED KEY HERE'
+
+# Fill one of the following two settings. Which one to fill depends on whether 
+# the repository is owned by a user or by an organisation. 
+GITHUB_ORGANISATION = None
+GITHUB_USER = None
+
+# The name of the repository
+GITHUB_REPOSITORY = None

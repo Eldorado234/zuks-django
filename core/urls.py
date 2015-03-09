@@ -17,4 +17,9 @@ urlpatterns = patterns('',
 	url(r'^robots\.txt/$', views.static, {'site' : 'robots.txt', 'content_type' : 'text/plain'}, name='robots'),
 	url(r'^sitemap\.xml/$', views.static, {'site' : 'sitemap.xml', 'content_type' : 'text/xml'}, name='sitemap'),
 	url(r'^google2ba41cbba49d5958\.html/$', views.static, {'site' : 'google2ba41cbba49d5958.html'}, name='google_verification'),
+
+	url(r'^faq/$', views.faq, name='faq'),
+	url(r'^faq/update$', views.update_faq, name='update_faq'),
+	url(r'^faq/submit$', views.submit_faq_question, name='faq_submit'),
+	
 )
