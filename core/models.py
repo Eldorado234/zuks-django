@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from core import mail
 from django.utils.text import slugify
 import hashlib
+from ordered_model.models import OrderedModel
 
 
 class NewsletterRecipient(models.Model):
@@ -86,8 +87,8 @@ class ContactMail(models.Model):
 		}
 		send_mail(self.subject, text, self.sender, [self.recipient])
 
-class FAQ(models.Model):
-	class Meta:
+class FAQ(OrderedModel):
+	class Meta(OrderedModel.Meta):
 		verbose_name = _("FAQ Question")
 		verbose_name_plural = _("FAQ Questions")
 
@@ -104,7 +105,7 @@ class FAQ(models.Model):
 
 		if not self.slug:
 			self.slug = slugify(self.text)
-			
+
 		super(FAQ, self).save(*args, **kwargs)
 
 	def __unicode__(self):
