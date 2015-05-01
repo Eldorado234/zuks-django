@@ -1329,9 +1329,14 @@ h2.prototyp-link {
 }
 
 .section-prototyp-link {
+  display: none;
   color: #ffffff;
   background-color: #4d9eff;
   padding: 55px 0px 40px 0px;
+}
+
+html.no-touch .section-prototyp-link  {
+  display: block;
 }
 
 /*
