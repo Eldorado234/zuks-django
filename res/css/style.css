@@ -1319,7 +1319,20 @@ ul.errorlist {
   border-bottom: 1px dashed #4d9eff;
 }
 
+a.prototyp-link {
+  color: #ffffff;
+  text-decoration: underline;
+}
 
+h2.prototyp-link {
+  color: #ffffff;
+}
+
+.section-prototyp-link {
+  color: #ffffff;
+  background-color: #4d9eff;
+  padding: 55px 0px 40px 0px;
+}
 
 /*
 .testimonial {
