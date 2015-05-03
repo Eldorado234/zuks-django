@@ -5,6 +5,12 @@ $(function () {
       navbarItem.addClass('active').siblings('li').removeClass('active');
     }
 
+    $('.section').mouseenter(function() {
+      var sectionName = $(this).attr('id');
+      var navbarItem = $('.navbar-nav a[href="#' + sectionName + '"]').parent();
+      activate(navbarItem);
+    });
+
     $('.navbar-nav a').click(function() {
       var navbarItem = $(this).parent();
       activate(navbarItem);
@@ -16,14 +22,5 @@ $(function () {
 
     $('#newsletterform').ajaxForm(function(returnVal) {
         $('#newsletterform').html($(returnVal).html());
-    });
-
-    $('ul.navbar-nav').onePageNav({
-        currentClass: 'active',
-        changeHash: false,
-        scrollSpeed: 750,
-        scrollThreshold: 0.5,
-        filter: '',
-        easing: 'swing'
     });
 });
