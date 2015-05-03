@@ -919,6 +919,7 @@ html {
 .header-logo-img {
   width: 600px;
   height: 164px;
+  float: left;
 }
 
 header.header {
@@ -1319,24 +1320,40 @@ ul.errorlist {
   border-bottom: 1px dashed #4d9eff;
 }
 
-a.prototyp-link {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-h2.prototyp-link {
-  color: #ffffff;
-}
-
-.section-prototyp-link {
+a#prototyp {
   display: none;
-  color: #ffffff;
-  background-color: #4d9eff;
-  padding: 55px 0px 40px 0px;
 }
 
-html.no-touch .section-prototyp-link  {
-  display: block;
+html.no-touch a#prototyp {
+  display: inline;
+  color: #eee;
+  background-color: #4d9eff;
+  padding: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 7px #222;
+  float: right;
+  margin-top: 43px;
+  opacity: 0.95;
+  cursor: pointer;
+}
+
+html.no-touch a#prototyp:hover {
+  text-decoration: none;
+  opacity: 1;
+  box-shadow: 3px 3px 7px #222;
+}
+
+@media (max-width: 1199px){
+  html.no-touch a#prototyp {
+    display: block;
+    clear: both;
+    float: left;
+  }
 }
 
 /*
