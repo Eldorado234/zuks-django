@@ -4,14 +4,18 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
-from django.core.mail import send_mail
-from core.forms import ContactForm
-from core import mail
-from core.models import NewsletterRecipient
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
+from django.http import Http404
 from django.utils.translation import ugettext as _
+from django.core.mail import send_mail
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
+from markdown import Markdown
+from core.forms import ContactForm
+from core import mail
+from core.models import NewsletterRecipient, Newsletter
 import logging
 
 def index(request):
@@ -67,7 +71,7 @@ def subscribeToNewsletter(request):
 			recp.save()
 
 			text = render_to_string('core/mail/subscribe.md', {'subscribe_id' : recp.confirm_id}, context)
-			mail.sendMail('info@zuks.org', [recp], text, _('ZUKS Newsletter Registration'),  display_unsubscribe=False)
+			mail.sendMail('info@zuks.org', [recp], text, None, _('ZUKS Newsletter Registration'),  display_unsubscribe=False)
 
 			context_dic['success'] = True
 		except ValidationError as e:
@@ -83,7 +87,6 @@ def subscribeToNewsletter(request):
 				recp.delete()
 			except:
 				pass
-
 
 	return render_to_response('core/subscribe_form.html', context_dic, context)
 
@@ -111,3 +114,27 @@ def unsubscribeFromNewsletter(request, id):
 		pass
 
 	return render_to_response('core/unsubscribe.html', {}, context)
+
+def viewNewsletter(request, newsId, user = None):
+	context = RequestContext(request)
+
+	try:
+		news = Newsletter.objects.get(id=newsId)
+	except Newsletter.DoesNotExist:
+		raise Http404(_('Newsletter could not be found.'))
+
+	if user is not None:
+		usr = NewsletterRecipient.objects.get(confirm_id=user)
+	else:
+		usr = None
+
+	unsubscribeId = usr.confirm_id if usr is not None else None
+	mailContent = mark_safe(Markdown().convert(escape(news.content)))
+
+	return render_to_response(
+		'core/newsletter.html', {
+			'news': news,
+			'newsContent': mailContent,
+			'user': usr
+		}, context
+	)

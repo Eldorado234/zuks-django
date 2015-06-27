@@ -265,6 +265,9 @@ hr {
                                 <a href="{{ settings.BASE_URL }}{% url 'impressum' %}#datenschutz">{% trans "privacy" %}</a>
                                 {% if unsubscribe_id %}
                                     | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}"><unsubscribe>{% trans "unsubscribe" %}</unsubscribe></a>
+                                    | <a href="{{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id user=unsubscribe_id %}">{% trans "Read online" %}</a>
+                                {% else %}
+                                    | <a href="{{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id %}">{% trans "Read online" %}</a>
                                 {% endif %}
                             </p>
                         </td>

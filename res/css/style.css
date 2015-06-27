@@ -1356,6 +1356,18 @@ html.no-touch a#prototyp:hover {
   }
 }
 
+img.newsLogo {
+  height: 45px;
+}
+
+td.newsLogo {
+  height: 82px;
+}
+
+.newsBody {
+  padding-top: 20px;
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;

@@ -56,7 +56,7 @@ class Newsletter(models.Model):
 
 		# Send mails
 		recipients = NewsletterRecipient.objects.filter(confirmed=True)
-		mail.sendMail(self.sender, recipients, self.content, self.subject, skip_errors=True)
+		mail.sendMail(self.sender, recipients, self.content, self.id, self.subject, skip_errors=True)
 
 class ContactMail(models.Model):
 	class Meta:
