@@ -1356,6 +1356,18 @@ html.no-touch a#prototyp:hover {
   }
 }
 
+#zuks.noBg {
+  background-image: none;
+}
+
+div.startpresentation {
+    background: url('../img/icons/play.png') no-repeat left;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;

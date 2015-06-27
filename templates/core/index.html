@@ -36,10 +36,12 @@
         <div class="splash-cover">
         </div>
         <div class="container">
+            <div id="presentationVideo"></div>
             <div class="splash-block">
                 <div class="centered">
                     <div class="container">
                         <div>
+                            <div class="startpresentation"></div>
                             <img class="header-logo-img" src="{% static "img/logo/logo-weiss@1200.png" %}" alt="ZUKS Logo" />
                             <a href="http://prototyp.zuks.org" id="prototyp">
                                 <img class="forward" src="/static/img/icons/forward_white.png" alt="Weiter Icon">Demo ausprobieren
@@ -380,6 +382,48 @@
         po.src = 'https://apis.google.com/js/platform.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })();
+
+      // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // Replace the 'ytplayer' element with an <iframe> and
+      // YouTube player after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        $('div.startpresentation').click(function () {
+            $('.splash-block').css('display', 'none');
+            $('.splash-cover').css('display', 'none');
+            $('#zuks').addClass('noBg');
+            player = new YT.Player('presentationVideo', {
+              height: $('#zuks').height() + 'px',
+              width: $('#zuks .container').width() + 'px',
+              videoId: 'Fe3PWiEiZ8E',
+              playerVars: {
+                  'autoplay': 1,
+                  'showinfo': 0,
+                  'iv_load_policy': 3,
+                  'controls': 2,
+                  'autohide': 1
+              },
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+        });
+      }
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+            // Close all again!
+            player = null;
+            $('.splash-cover').css('display', 'block');
+            $('#zuks').removeClass('noBg');
+            $('#presentationVideo').replaceWith('<div id="presentationVideo"></div>');
+            $('.splash-block').css('display', 'block');
+        }
+      }
     </script>
 
     <script>
