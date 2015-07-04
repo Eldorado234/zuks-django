@@ -118,13 +118,15 @@
         </div>
     </div>
 
-    <div class="section-concept-link type-1">
-        <div class="container">
-            <h2 class="concept-link">
-                <img class="forward" src="{% static "img/icons/forward_white.png" %}" alt="Weiter Icon">Genauere Informationen gibt es auf unserer <a href="{% url "konzept" %}" class="concept-link">Konzept-Seite.</a>
-            </h2>
+    <a href="{% url "konzept" %}" class="concept-link">
+        <div class="section-concept-link type-1">
+            <div class="container">
+                <h2 class="concept-link">
+                    <img class="forward" src="{% static "img/icons/forward_white.png" %}" alt="Weiter Icon">Genauere Informationen gibt es auf unserer Konzept-Seite.
+                </h2>
+            </div>
         </div>
-    </div>
+    </a>
 
     <div class="section type-3" id="team">
         <div class="container">

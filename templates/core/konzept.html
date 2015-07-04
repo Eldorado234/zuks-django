@@ -29,8 +29,8 @@
 {% endblock "mobile_menu" %}
 
 {% block "content" %}
-    <div class="section type-1 concept-section" id="konzept">
-        <div class="container motivation">
+    <div class="section type-2 concept-section" id="konzept">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <h1>Motivation</h1>
@@ -68,7 +68,7 @@
                     </ol>
                 </div>
             </div>
-            <hr class="white">
+            <hr class="grey">
             <div class="row">
                 <div class="col-lg-6">
                     <h1>Zielgruppe</h1>
@@ -80,12 +80,21 @@
                     </p>
                 </div>
                 <div class="col-lg-6">
-                    <h1><a href="{% static "files/Konzept_1.2.pdf" %}">Konzept vom Juni 2015 herunterladen</a></h1>
-                    <img src="{% static "img/logo/logo-bild-weiss@320.png" %} " alt="ZUKS Logo Bildmarke" class="content-icon-160" />
+                    <img src="{% static "img/logo/logo-bild@320.png" %} " alt="ZUKS Logo Bildmarke" class="content-icon-160" />
                 </div>
             </div>
         </div>
     </div>
+
+    <a href="{% static "files/Konzept_1.2.pdf" %}" class="concept-link">
+        <div class="section-concept-link type-2">
+            <div class="container">
+                <h2 class="concept-link">
+                    <img class="forward" src="{% static "img/icons/down_white.png" %}" alt="Download Icon">Konzept vom Juni 2015 herunterladen.
+                </h2>
+            </div>
+        </div>
+    </a>
 
     <div class="section type-2" id="einsatz">
         <div class="container">
