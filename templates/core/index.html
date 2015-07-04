@@ -376,6 +376,7 @@
 {% block "scripts" %}
 	<script type="text/javascript">
       window.___gcfg = {lang: 'de'};
+      var player;
 
       (function() {
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -389,9 +390,6 @@
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      // Replace the 'ytplayer' element with an <iframe> and
-      // YouTube player after the API code downloads.
-      var player;
       function onYouTubePlayerAPIReady() {
         $('div.startpresentation').click(function () {
             $('.splash-block').css('display', 'none');
