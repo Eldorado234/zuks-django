@@ -131,8 +131,11 @@ def viewNewsletter(request, newsId, user = None):
 	unsubscribeId = usr.confirm_id if usr is not None else None
 	mailContent = mark_safe(Markdown().convert(escape(news.content)))
 	(txt, mailContent) = mail.renderContent(news.content, newsId, unsubscribeId, tpl='core/mail/news_body.html')
+	# remove <html>/<body>/<head> data.
+	mailContent = mailContent.replace('<html>', '').replace('</html>', '').replace('<head></head>', '').replace('</body>', '')
+	mailContent = mailContent[mailContent.index('>', mailContent.index('<body'))+1:]
 
-	t = render_to_response(
+	return render_to_response(
 		'core/newsletter.html', {
 			'news': news,
 			'newsContent': mailContent,
@@ -140,7 +143,3 @@ def viewNewsletter(request, newsId, user = None):
 			'userId': user,
 		}, context
 	)
-	print(t._container[0].decode('utf-8'))
-	print('------------\n\n')
-	print(mailContent)
-	return t
