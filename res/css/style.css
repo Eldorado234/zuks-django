@@ -276,6 +276,12 @@ strong,
 b {
   color: #555;
 }
+/* Next is required to ensure to see hyperlinks also on blue background */
+.section.type-1 a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 a {
   color: #4d9eff;
 }
