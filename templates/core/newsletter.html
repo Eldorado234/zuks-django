@@ -25,80 +25,25 @@
 
 {% block "content" %}
     <div class="section type-2">
-        <div class="container">
-            <div>
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3" class="vertMargin">
+        <div class="news-container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 vertMargin">
+                     <div class="centerContent">
                        <h2>
                            {{ news.subject }}
                        </h2>
                        <h3>
                            {% blocktrans with sendDate=news.send_date|date:"SHORT_DATE_FORMAT" %}Newsletter sent on {{ sendDate }}{% endblocktrans %}
                        </h3>
-                       <!-- body -->
-                        <table class="body-wrap">
-                            <tr>
-                                <td></td>
-                                <td class="container" bgcolor="#FFFFFF">
-                                    <!-- content -->
-                                    <div class="content">
-                                    <table>
-                                        <tr>
-                                            <td class="container newsLogo" bgcolor="#4d9eff">
-                                                <a href="{{ settings.BASE_URL }}">
-                                                    <img class="newsLogo" src="{% static 'img/logo/logo-weiss@300.png' %}">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="newsBody">
-                                                {{ newsContent }}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    </div>
-                                    <!-- /content -->
-
-                                </td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <!-- /body -->
-
-                        <!-- footer -->
-                        <div class="center-block">
-                            <table class="center-block">
-                              <tbody class="center-block">
-                                <tr class="center-block">
-                                    <td align="center" class="center-block">
-                                        <p class="socials">
-                                            <a href="https://www.facebook.com/zuks.org" title="{% trans "ZUKS Facebook page" %}">
-                                            <img src="{% static 'img/icons/social/facebook.png' %}" alt="{% trans "ZUKS Facebook page" %}">
-                                            </a>
-                                            <a href="https://plus.google.com/+ZuksOrg" title="{% trans "ZUKS Google+ page" %}">
-                                            <img src="{% static 'img/icons/social/google+.png' %}" alt="{% trans "ZUKS Google+ page" %}">
-                                            </a>
-                                            <a href="https://twitter.com/zuksDE" title="{% trans "ZUKS Twitter page" %}">
-                                            <img src="{% static 'img/icons/social/twitter.png' %}" alt="{% trans "ZUKS Twitter page" %}">
-                                            </a>
-                                        </p>
-                                        <p>
-                                            <a href="{% url 'impressum' %}">{% trans "imprint" %}</a> |
-                                            <a href="{% url 'impressum' %}#datenschutz">{% trans "privacy" %}</a>
-                                            {% if user.confirm_id %}
-                                                | <a href="{% url 'unsubscribe' id=user.confirm_id %}"><unsubscribe>{% trans "unsubscribe" %}</unsubscribe></a>
-                                            {% endif %}
-                                        </p>
-                                    </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                        </div>
-                        <!-- /footer -->
-                    </div>
-
-                </div>
-            </div>
+                     </div>
+                     {% autoescape off %}
+                     {{ newsContent }}
+                     {% endautoescape %}
+                  </div>
+              </div>
         </div>
     </div>
 {% endblock "content" %}
+
+{% block "scripts" %}
+{% endblock "scripts" %}

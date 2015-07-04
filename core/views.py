@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.utils.translation import ugettext as _
 from django.core.mail import send_mail
 from django.utils.html import escape
@@ -130,11 +130,17 @@ def viewNewsletter(request, newsId, user = None):
 
 	unsubscribeId = usr.confirm_id if usr is not None else None
 	mailContent = mark_safe(Markdown().convert(escape(news.content)))
+	(txt, mailContent) = mail.renderContent(news.content, newsId, unsubscribeId, tpl='core/mail/news_body.html')
 
-	return render_to_response(
+	t = render_to_response(
 		'core/newsletter.html', {
 			'news': news,
 			'newsContent': mailContent,
-			'user': usr
+			'newsId': newsId,
+			'userId': user,
 		}, context
 	)
+	print(t._container[0].decode('utf-8'))
+	print('------------\n\n')
+	print(mailContent)
+	return t

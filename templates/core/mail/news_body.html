@@ -1,0 +1,83 @@
+{% load staticfiles %}
+{% load i18n %}
+<style>
+{% include "core/mail/news.css" %}
+</style>
+<div class="news-body">
+    <!-- body -->
+    <table class="body-wrap">
+        <tr>
+            <td></td>
+            <td class="news-container" bgcolor="#FFFFFF">
+
+                <!-- content -->
+                <div class="content">
+                <table>
+                    <tr>
+
+                        <td class="news-container" bgcolor="#4d9eff">
+                            <a href="{{ settings.BASE_URL }}">
+                                <img class="logo" src="{{ settings.BASE_URL }}{% static 'img/logo/logo-weiss@300.png' %}">
+                            </a>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="bodyContent">
+                            {{ content }}
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <!-- /content -->
+
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- /body -->
+
+    <!-- footer -->
+    <table class="footer-wrap">
+        <tr>
+            <td></td>
+            <td class="news-container">
+
+                <!-- content -->
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <p class="socials">
+                                    <a href="https://www.facebook.com/zuks.org" title="{% trans "ZUKS Facebook page" %}">
+                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/facebook.png' %}" alt="{% trans "ZUKS Facebook page" %}">
+                                    </a>
+                                    <a href="https://plus.google.com/+ZuksOrg" title="{% trans "ZUKS Google+ page" %}">
+                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/google+.png' %}" alt="{% trans "ZUKS Google+ page" %}">
+                                    </a>
+                                    <a href="https://twitter.com/zuksDE" title="{% trans "ZUKS Twitter page" %}">
+                                    <img src="{{ settings.BASE_URL }}{% static 'img/icons/social/twitter.png' %}" alt="{% trans "ZUKS Twitter page" %}">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="{{ settings.BASE_URL }}{% url 'impressum' %}">{% trans "imprint" %}</a> |
+                                    <a href="{{ settings.BASE_URL }}{% url 'impressum' %}#datenschutz">{% trans "privacy" %}</a>
+                                    {% if unsubscribe_id %}
+                                        | <a href="{{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}"><unsubscribe>{% trans "unsubscribe" %}</unsubscribe></a>
+                                        | <a href="{{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id user=unsubscribe_id %}">{% trans "Read online" %}</a>
+                                    {% else %}
+                                        | <a href="{{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id %}">{% trans "Read online" %}</a>
+                                    {% endif %}
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /content -->
+
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- /footer -->
+</div>

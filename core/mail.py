@@ -49,17 +49,19 @@ def sendMail(sender, receivers, markdown_content, news_id, subject,
 		raise error
 
 
-def renderContent(markdown_content, news_id, unsubscribe_id=None, context=None):
+def renderContent(markdown_content, news_id, unsubscribe_id=None, context=None, tpl='core/mail/base_mail.html'):
 	"""
 		Converts the markdown content to a raw text and a html version that could
 		be used as content in an email. The text is embedded in the core/mail/base_mail.txt,
 		the html in the core/mail/base_mail_inline.html template.
 
 		Args:
-      		markdown_content (string): the content in a valid markdown syntax
-      		unsubscribe_id   (string): the id which could be used by the user to
-      								   unsubscribe from the newsletter. Is embedded
-      								   in the unsubscribe link in the templates.
+      		markdown_content (string):  the content in a valid markdown syntax
+      		news_id 		 (integer): id for the news (read online link)
+      		unsubscribe_id   (string):  the id which could be used by the user to
+      								    unsubscribe from the newsletter. Is embedded
+      								    in the unsubscribe link in the templates.
+            context 		 (Context):	Context object.
 
       	Returns:
       		a tuple with the text version at the first index and
@@ -86,7 +88,7 @@ def renderContent(markdown_content, news_id, unsubscribe_id=None, context=None):
 	# (mark_safe is needed to prevent the converted html to be escaped)
 	content_dic['content'] = mark_safe(Markdown().convert(markdown_content))
 	# Render html
-	html = render_to_string('core/mail/base_mail.html', content_dic, context)
+	html = render_to_string(tpl, content_dic, context)
 	# Inline css styles
 	html = premailer.transform(html)
 

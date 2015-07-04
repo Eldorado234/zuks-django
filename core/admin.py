@@ -36,7 +36,7 @@ class NewsletterAdmin(admin.ModelAdmin):
         context = RequestContext(request)
 
         content = request.POST['content'] if request.POST else ''
-        (_,html) = mail.renderContent(content, 'placeholder', context=context)
+        (_,html) = mail.renderContent(content, 0, 'placeholder', context=context)
 
         return HttpResponse(html)
 
