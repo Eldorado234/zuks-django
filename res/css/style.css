@@ -276,6 +276,12 @@ strong,
 b {
   color: #555;
 }
+/* Next is required to ensure to see hyperlinks also on blue background */
+.section.type-1 a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 a {
   color: #4d9eff;
 }
@@ -1239,19 +1245,25 @@ img.einsatzstruktur {
   padding-top: 120px;
 }
 
-.motivation {
-  color: #fefefe;
-}
-
 hr.white {
   border: 0px;
   background-color: #fefefe;
   height: 1px;
 }
 
+hr.grey {
+  border: 0px;
+  background-color: #DDD;
+  height: 1px;
+}
+
 a.concept-link {
   color: #ffffff;
   text-decoration: underline;
+}
+
+a.concept-link:hover {
+  text-decoration: none;
 }
 
 h2.concept-link {
