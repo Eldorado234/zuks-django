@@ -29,6 +29,7 @@ urlpatterns = patterns('',
 	url(r'^subscribe/$', views.subscribeToNewsletter, name='subscribe'),
 	url(r'^confirm/(?P<id>.+)/$', views.confirmNewsletter, name='confirm'),
 	url(r'^unsubscribe/(?P<id>.+)/$', views.unsubscribeFromNewsletter, name='unsubscribe'),
+	url(r'^news/(?P<newsId>[0-9]+)/(?P<user>.+)?$', views.viewNewsletter, name='newsletter'),
 
 	url(r'^robots\.txt/$', views.static, {'site' : 'robots.txt', 'content_type' : 'text/plain'}, name='robots'),
 	url(r'^sitemap\.xml/$', views.static, {'site' : 'sitemap.xml', 'content_type' : 'text/xml'}, name='sitemap'),

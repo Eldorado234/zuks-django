@@ -1368,6 +1368,11 @@ html.no-touch a#prototyp:hover {
   }
 }
 
+.centerContent {
+  margin: 0 auto;
+  text-align: center;
+}
+
 /*
 .testimonial {
   padding: 40px 40px 10px 40px;

@@ -11,4 +11,7 @@
 
 {% if unsubscribe_id %}
 {% trans "unsubscribe" %}: {{ settings.BASE_URL }}{% url 'unsubscribe' id=unsubscribe_id %}
+{% trans "Read online" %}: {{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id user=unsubscribe_id %}
+{% else %}
+{% trans "Read online" %}: {{ settings.BASE_URL }}{% url 'newsletter' newsId=news_id %}
 {% endif %}

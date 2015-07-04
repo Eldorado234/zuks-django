@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-03 17:29+0000\n"
+"POT-Creation-Date: 2015-06-27 17:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +49,9 @@ msgid "Confirmation date"
 msgstr "Bestätigungs-Datum"
 
 #: core/models.py:42 templates/core/confirm.html:11
-#: templates/core/confirm.html.py:22 templates/core/newsletter_backend.html:12
+#: templates/core/confirm.html.py:22 templates/core/newsletter.html:12
+#: templates/core/newsletter.html.py:21
+#: templates/core/newsletter_backend.html:12
 #: templates/core/newsletter_backend.html:23
 #: templates/core/unsubscribe.html:11 templates/core/unsubscribe.html.py:22
 msgid "Newsletter"
@@ -111,24 +113,30 @@ msgstr "Datum"
 msgid "Text"
 msgstr "Anliegen"
 
-#: core/views.py:63
+#: core/views.py:67
 msgid "Please enter a valid email address"
 msgstr "Bitte gib eine gültige E-Mail-Adresse an."
 
-#: core/views.py:70
+#: core/views.py:74
 msgid "ZUKS Newsletter Registration"
 msgstr "ZUKS Newsletter Registrierung"
 
-#: core/views.py:76
+#: core/views.py:80
 msgid "For this mail a newsletter is already requested."
 msgstr "Für diese E-Mail-Adresse wurde bereits ein Newsletter angefordert."
 
-#: core/views.py:79
+#: core/views.py:83
 msgid ""
 "Unfortunately, the request could not be processed. Please try again later."
 msgstr ""
 "Die Anfrage konnte leider nicht bearbeitet werden. Bitte versuche es später "
 "erneut."
+
+#: core/views.py:124
+#, fuzzy
+#| msgid "Newsletter cancellation"
+msgid "Newsletter could not be found."
+msgstr "Newsletter abbestellen"
 
 #: templates/core/base.html:15 templates/core/mail/base_mail.txt:8
 msgid "Civilian Support in Civil Protection"
@@ -222,31 +230,41 @@ msgid "ZUKS Newsletter"
 msgstr "ZUKS Newsletter"
 
 #: templates/core/mail/base_mail.html:253
-#: templates/core/mail/base_mail.html:254
+#: templates/core/mail/base_mail.html:254 templates/core/newsletter.html:75
+#: templates/core/newsletter.html.py:76
 msgid "ZUKS Facebook page"
 msgstr "ZUKS Facebook Seite"
 
 #: templates/core/mail/base_mail.html:256
-#: templates/core/mail/base_mail.html:257
+#: templates/core/mail/base_mail.html:257 templates/core/newsletter.html:78
+#: templates/core/newsletter.html.py:79
 msgid "ZUKS Google+ page"
 msgstr "ZUKS Google+ Seite"
 
 #: templates/core/mail/base_mail.html:259
-#: templates/core/mail/base_mail.html:260
+#: templates/core/mail/base_mail.html:260 templates/core/newsletter.html:81
+#: templates/core/newsletter.html.py:82
 msgid "ZUKS Twitter page"
 msgstr "ZUKS Twitter Seite"
 
-#: templates/core/mail/base_mail.html:264
+#: templates/core/mail/base_mail.html:264 templates/core/newsletter.html:86
 msgid "imprint"
 msgstr "Impressum"
 
-#: templates/core/mail/base_mail.html:265
+#: templates/core/mail/base_mail.html:265 templates/core/newsletter.html:87
 msgid "privacy"
 msgstr "Datenschutz"
 
 #: templates/core/mail/base_mail.html:267 templates/core/mail/base_mail.txt:13
+#: templates/core/newsletter.html:89
 msgid "unsubscribe"
-msgstr "abmelden"
+msgstr "Abbestellen"
+
+#: templates/core/mail/base_mail.html:268
+#: templates/core/mail/base_mail.html:270 templates/core/mail/base_mail.txt:14
+#: templates/core/mail/base_mail.txt:16
+msgid "Read online"
+msgstr "Online lesen"
 
 #: templates/core/mail/base_mail.txt:9
 msgid "Website"
@@ -255,6 +273,15 @@ msgstr "Website"
 #: templates/core/mail/base_mail.txt:10
 msgid "Contact"
 msgstr "Kontakt"
+
+#: templates/core/newsletter.html:7
+msgid "Read newsletter online."
+msgstr "Newsletter online lesen"
+
+#: templates/core/newsletter.html:36
+#, python-format
+msgid "Newsletter sent on %(sendDate)s"
+msgstr "Newsletter gesendet am %(sendDate)s"
 
 #: templates/core/newsletter_backend.html:7
 msgid "Admin Interface to send newsletters"

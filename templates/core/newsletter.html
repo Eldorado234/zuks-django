@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block "metadata" %}
+    <meta name="description" content="{% trans "Read newsletter online." %}">
+{% endblock "metadata" %}
+
+{% block "menu" %}
+  <li><a href="{% url "index" %}" class="back">ZUKS</a></li>
+  <li class="active"><a href="#mail">{% trans "Newsletter" %}</a></li>
+{% endblock "menu" %}
+
+{% block "mobile_menu" %}
+  <li>
+      <a href="{% url "index" %}" class="back" data-toggle="collapse" data-target=".navbar-responsive-collapse">ZUKS</a>
+  </li>
+  <li class="active">
+      <a href="#mail" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          {% trans "Newsletter" %}
+      </a>
+  </li>
+{% endblock "mobile_menu" %}
+
+{% block "content" %}
+    <div class="section type-2">
+        <div class="news-container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 vertMargin">
+                     <div class="centerContent">
+                       <h2>
+                           {{ news.subject }}
+                       </h2>
+                       <h3>
+                           {% blocktrans with sendDate=news.send_date|date:"SHORT_DATE_FORMAT" %}Newsletter sent on {{ sendDate }}{% endblocktrans %}
+                       </h3>
+                     </div>
+                     {% autoescape off %}
+                     {{ newsContent }}
+                     {% endautoescape %}
+                  </div>
+              </div>
+        </div>
+    </div>
+{% endblock "content" %}
+
+{% block "scripts" %}
+{% endblock "scripts" %}
